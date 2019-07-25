@@ -1,0 +1,6 @@
+main.o
+structs_inits.o
+validation.o
+.DS_Store
+libft/*.o
+fdf
