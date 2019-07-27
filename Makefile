@@ -4,13 +4,11 @@ CC = clang
 CFLAGS = -Wall -Wextra -Werror
 MLXFLAGS = -lmlx -framework OpenGL -framework AppKit
 
-INC_DIR = inc/
-INCS := $(addprefix $(INC_DIR), fdf.h)
+INCS := inc/fdf.h
 
-SRC_DIR = src/
-SRCS := $(addprefix $(SRC_DIR), main.c structs_inits.c validation.c)
+SRCS := srcs/main.c srcs/validation.c srcs/errors.c
 
-OBJ := main.o structs_inits.o validation.o
+OBJ := main.o validation.o errors.o
 
 LIB_DIR := libft
 LIBFT := $(LIB_DIR)/libft.a
@@ -20,15 +18,16 @@ dev: $(NAME)
 
 all: $(NAME) clean
 
-$(NAME): $(LIBFT) $(OBJ)
+$(NAME):$(OBJ)
 	$(CC) $(CFLAGS) $(MLXFLAGS) -o $(NAME) $(OBJ) $(LIBFT)
 
-$(OBJ): $(SRCS) $(INCS)
+$(OBJ):$(LIBFT) $(SRCS) $(INCS)
 	$(CC) $(CFLAGS) -c $(SRCS) -I $(INCS)
 
-$(LIBFT):
-	cd $(LIB_DIR) && $(MAKE)
-	
+$(LIBFT): lib
+
+lib:
+	make -C libft/
 
 .PHONY: clean
 clean:
@@ -37,7 +36,7 @@ clean:
 
 .PHONY: fclean
 fclean: clean
-	rm $(NAME) $(LIBFT)
+	rm -f $(NAME)
 	cd $(LIB_DIR) && $(MAKE) fclean
 
 .PHONY: re

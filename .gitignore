@@ -12,3 +12,6 @@ cmake-build-debug/CMakeCache.txt
 cmake-build-debug/CMakeFiles/clion-log.txt
 minilibx_macos/CMakeLists.txt
 cmake-build-debug/
+errors.o
+minilibx_macos/*.o
+minilibx_macos/libmlx.a
