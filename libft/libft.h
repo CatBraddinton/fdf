@@ -6,7 +6,7 @@
 /*   By: kdudko <kdudko@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 15:01:56 by kdudko            #+#    #+#             */
-/*   Updated: 2019/07/25 12:49:18 by kdudko           ###   ########.fr       */
+/*   Updated: 2019/07/26 11:01:17 by kdudko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,6 @@ int					ft_isspace(int c);
 char				*ft_strndup(const char *s1, size_t n);
 size_t				ft_strlcpy(char *dst, char const *src, size_t dstsize);
 int					get_next_line(const int fd, char **line);
-
+void 				free_map_arr(char **map);
+int					count_digits(int num);
 #endif
