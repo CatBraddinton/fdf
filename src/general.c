@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_2d_arr.c                                      :+:      :+:    :+:   */
+/*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kdudko <kdudko@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/28 02:48:27 by kdudko            #+#    #+#             */
-/*   Updated: 2019/07/28 02:49:36 by kdudko           ###   ########.fr       */
+/*   Created: 2019/07/28 05:27:09 by kdudko            #+#    #+#             */
+/*   Updated: 2019/07/28 05:27:12 by kdudko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../inc/fdf.h"
 
-void	free_map_arr(char **map, int size)
+void	error_message(const char *str)
+{
+	ft_putendl(str);
+	exit(EXIT_FAILURE);
+}
+
+void	free_2d_arr(char **str, int size)
 {
 	int i;
 
 	i = 0;
-	while (i < size)
+	while (i <= size)
 	{
-		ft_strdel(&map[i]);
+		free(str[i]);
 		i++;
 	}
-	ft_strdel(&map[i]);
-	free(map);
+	free(str);
 }

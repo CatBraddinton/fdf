@@ -23,8 +23,8 @@ int	mlx_int_str_str(char *str,char *find,int len)
       f = find;
       while (*(f++) == *(s++))
         if (!*f)
-          return (pos);
-      str ++;
+       ;   return (pos);
+		str ++
       pos ++;
     }
   return (-1);

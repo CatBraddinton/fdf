@@ -93,7 +93,7 @@ int					ft_isspace(int c);
 char				*ft_strndup(const char *s1, size_t n);
 size_t				ft_strlcpy(char *dst, char const *src, size_t dstsize);
 int					get_next_line(const int fd, char **line);
-void				free_map_arr(char **map, int size);
-int					count_digits(int num);
+int					ft_count_digits(int num);
+unsigned long		ft_hex_to_ul(char *s);
 
 #endif

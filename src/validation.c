@@ -19,7 +19,7 @@ static void	check_color(char *s, int i)
 	j = 0;
 	if (s[i] != '\0' && s[i++] != '0')
 		error_message("invalid map");
-	if (s[i] != '\0' && s[i] != 'x' &&  s[i] != 'X')
+	if (s[i] != '\0' && s[i] != 'x' && s[i] != 'X')
 		error_message("invalid map");
 	i++;
 	while (s[i] != '\0' && j < 6)
@@ -97,7 +97,7 @@ int			validation(char *str, t_fdf *data)
 
 	validate_path_to_file(str);
 	if ((fd = open(str, O_RDONLY)) < 0)
-		error_message(strerror(errno));
+		error_message("failed to open the file");
 	data->cols = 0;
 	data->rows = 0;
 	validate_map(fd, data);
