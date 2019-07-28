@@ -10,18 +10,35 @@
 # include <fcntl.h>
 # include <errno.h>
 
-# define WIN_WIDTH	1000
-# define WIN_HEIGHT 1000
 
-typedef struct 	s_mlx
+
+typedef	struct 	s_point
 {
-	void	*mlx;
-	void	*win;
-	void	*img;
-	char	*arr;
+	int			x;
+	int			y;
+	int			z;
+	int			color;
+}				t_point;
+
+typedef struct	s_triangle
+{
+	t_point		points[3];
+
+}				t_triangle;
+
+typedef struct	s_mlx
+{
+	void		*mlx;
+	void		*win;
+	void		*img;
+	int			bits_per_pixel;
+	int			size_line;
+	int			endian;
+	char 		*arr;
 }				t_mlx;
 
-void	mlx_data_init(t_mlx *data);
-void	validation(int ac, char *av[]);
+void	error_message(const char *strs);
+int 	validation(char *str);
+
 
 #endif
