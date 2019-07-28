@@ -12,15 +12,16 @@
 
 #include "libft.h"
 
-void	free_map_arr(char **map)
+void	free_map_arr(char **map, int size)
 {
 	int i;
 
 	i = 0;
-	while (map[i])
+	while (i < size)
 	{
-		free(map[i]);
+		ft_strdel(&map[i]);
 		i++;
 	}
-	map = NULL;
+	ft_strdel(&map[i]);
+	free(map);
 }
