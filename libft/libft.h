@@ -86,7 +86,7 @@ void				ft_lstadd(t_list **alst, t_list *new);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstnew(void const *content, size_t content_size);
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
-size_t				ft_count_words(const char *s, char c);
+unsigned int		ft_count_words(const char *s, char c);
 char				*ft_search_and_replace(char *str, char search, \
 														char replace);
 int					ft_isspace(int c);

@@ -37,7 +37,6 @@ static char	**alloc(char **arr, char const *s, char c, size_t words)
 		}
 		i++;
 	}
-	arr[row] = 0;
 	return (arr);
 }
 
@@ -49,13 +48,13 @@ char		**ft_strsplit(char const *s, char c)
 	if (!(s && c))
 		return (NULL);
 	words = ft_count_words(s, c);
-	arr = (char **)malloc(sizeof(char*) * (words + 1));
+	arr = (char **)malloc(sizeof(char *) * words + 1);
 	if (arr == NULL)
 		return (NULL);
-	if (ft_strlen(s) > 1 && ft_strchr(s, c) == NULL)
+	arr[words] = 0;
+	if (words == 1 && ft_strlen(s) > 1 && ft_strchr(s, c) == NULL)
 	{
 		arr[0] = ft_strsub(s, 0, ft_strlen(s));
-		arr[1] = 0;
 		return (arr);
 	}
 	arr = alloc(arr, s, c, words);
