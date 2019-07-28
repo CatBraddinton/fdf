@@ -17,7 +17,12 @@ int	count_digits(int num)
 	int i;
 
 	i = 0;
-	while ((num / 10) != 0)
+	if (num == 0)
+		return (1);
+	while (num != 0)
+	{
+		num /= 10;
 		i++;
+	}
 	return (i);
 }
