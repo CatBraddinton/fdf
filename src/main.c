@@ -14,10 +14,12 @@
 
 int	main(int ac, char *av[])
 {
+	t_fdf	data;
+
 	errno = 0;
 	if (ac != 2 || av[1] == NULL)
 		error_message("usage: ./fdf [path/to/map/file.fdf]");
-	validation(av[1]);
+	validation(av[1], &data);
 	system("leaks fdf");
 	return (0);
 }

@@ -10,8 +10,6 @@
 # include <fcntl.h>
 # include <errno.h>
 
-
-
 typedef	struct 	s_point
 {
 	int			x;
@@ -26,19 +24,19 @@ typedef struct	s_triangle
 
 }				t_triangle;
 
-typedef struct	s_mlx
+typedef struct	s_fdf
 {
 	void		*mlx;
 	void		*win;
 	void		*img;
 	int			bits_per_pixel;
 	int			size_line;
+	int 		cols;
+	int 		rows;
 	int			endian;
-	char 		*arr;
-}				t_mlx;
+}				t_fdf;
 
 void	error_message(const char *strs);
-int 	validation(char *str);
-
+int 	validation(char *str, t_fdf *data);
 
 #endif
