@@ -6,7 +6,7 @@ MLXFLAGS = -lmlx -framework OpenGL -framework AppKit
 
 INCS := inc/fdf.h
 
-SRCS := srcs/main.c srcs/validation.c srcs/errors.c
+SRCS := src/main.c src/validation.c src/errors.c
 
 OBJ := main.o validation.o errors.o
 
