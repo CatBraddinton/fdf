@@ -17,16 +17,3 @@ void	error_message(const char *str)
 	ft_putendl(str);
 	exit(EXIT_FAILURE);
 }
-
-void	free_2d_arr(char **str, int size)
-{
-	int i;
-
-	i = 0;
-	while (i <= size)
-	{
-		free(str[i]);
-		i++;
-	}
-	free(str);
-}

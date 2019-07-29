@@ -70,13 +70,13 @@ static void	validate_map(int fd, t_fdf *data)
 	while ((get_next_line(fd, &line)) == 1)
 	{
 		temp = ft_count_words(line, ' ');
-		if (data->cols == 0)
-			data->cols = temp;
-		if (temp != data->cols)
+		if (data->map->cols == 0)
+			data->map->cols = temp;
+		if (temp != data->map->cols)
 			error_message("invalid map");
 		check_errors(line);
 		ft_strdel(&line);
-		data->rows++;
+		data->map->rows++;
 	}
 }
 
@@ -98,8 +98,10 @@ int			validation(char *str, t_fdf *data)
 	validate_path_to_file(str);
 	if ((fd = open(str, O_RDONLY)) < 0)
 		error_message("failed to open the file");
-	data->cols = 0;
-	data->rows = 0;
+	data->map->cols = 0;
+	data->map->rows = 0;
+	data->map->max_depth = 0;
+	data->map->min_depth = 0;
 	validate_map(fd, data);
 	close(fd);
 	return (1);

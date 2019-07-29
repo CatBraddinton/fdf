@@ -13,19 +13,23 @@
 #include "../inc/fdf.h"
 
 
-
 int	main(int ac, char *av[])
 {
-	t_fdf	data;
-	t_point	*all;
-
+	t_fdf	*data;
 
 	if (ac != 2 || av[1] == NULL)
 		error_message("usage: ./fdf [path/to/map/file.fdf]");
-	validation(av[1], &data);
-	all = (t_point *)malloc((data.rows * data.cols) * sizeof(t_point));
-	fdf(&data, all, av[1]);
-
+	if ((data = ft_memalloc(sizeof(t_fdf))) == NULL)
+		error_message("malloc allocation failed");
+	if ((data->map = ft_memalloc(sizeof(t_map))) == NULL)
+		error_message("malloc allocation failed");
+	if ((data->map->points = ft_memalloc(data->map->cols *
+			data->map->cols * sizeof(t_point))) == NULL)
+		error_message("malloc allocation failed");
+	validation(av[1], data);
+	free(data->map->points);
+	free(data->map);
+	free(data);
 	system("leaks fdf");
 	return (0);
 }
