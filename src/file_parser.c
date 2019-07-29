@@ -12,7 +12,7 @@
 
 #include "../inc/fdf.h"
 
-static	void	parse_str(t_point *point, char *line, int size)
+static	void	parse_str(t_point *point, char *line, int size, int y)
 {
 	char	**arr;
 	int		i;
@@ -21,13 +21,19 @@ static	void	parse_str(t_point *point, char *line, int size)
 	i = 0;
 	while (i < size)
 	{
-		point->x = i;
-		point->z = ft_atoi(arr[i]);
+		point[i].x = i;
+		point[i].y = y;
+		point[i].z = ft_atoi(arr[i]);
 		if ((ft_strchr(arr[i], ',')) == NULL)
-			point->color = COLOR;
+			point[i].color = COLOR;
 		else
-			point->color = ft_hex_to_ul(ft_strchr(arr[i], ','));
-		ft_strdel((arr + i));
+			point[i].color = ft_hex_to_ul(ft_strchr(arr[i], ','));
+		i++;
+	}
+	i = 0;
+	while (i < size)
+	{
+		ft_strdel(&arr[i]);
 		i++;
 	}
 	free(arr);
@@ -49,8 +55,7 @@ void			parse_map(t_map *map, char *prog_name)
 	{
 		if ((map->points[i] = ft_memalloc(map->cols * sizeof(t_point))) == NULL)
 			error_message("malloc allocation failed");
-		map->points[i]->y = i;
-		parse_str(map->points[i], line, map->cols);
+		parse_str(map->points[i], line, map->cols, i);
 		i++;
 		ft_strdel(&line);
 	}
