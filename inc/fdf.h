@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fdf.h                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kdudko <kdudko@student.unit.ua>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/29 13:32:57 by kdudko            #+#    #+#             */
+/*   Updated: 2019/07/29 13:33:00 by kdudko           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FDF_H
 # define FDF_H
 
@@ -11,13 +23,13 @@
 # include "../libft/libft.h"
 # include "mlx.h"
 
-# define WIDTH		1300
-# define HEIGHT		950
-# define COLOR 		0x91ffeb
+# define WIDTH		1500
+# define HEIGHT		1000
+# define COLOR 		0x91FFEB
 # define ISO		1
 # define PARALLEL 	2
 
-typedef	struct 		s_point
+typedef	struct		s_point
 {
 	int				x;
 	int				y;
@@ -25,12 +37,12 @@ typedef	struct 		s_point
 	unsigned long	color;
 }					t_point;
 
-typedef struct 		s_map
+typedef struct		s_map
 {
-	int 			cols;
-	int 			rows;
-	int 			min_depth;
-	int 			max_depth;
+	int				cols;
+	int				rows;
+	int				min_depth;
+	int				max_depth;
 	t_point			**points;
 }					t_map;
 
@@ -50,20 +62,24 @@ typedef struct		s_fdf
 	void			*mlx;
 	void			*win;
 	t_img			*img;
-	t_map			*map;
-	t_point			first;
-	t_point			last;
-	int 			dx;
-	int 			dy;
-	int 			sx;
-	int 			sy;
-	int 			err1;
-	int 			err2;
-	int 			proj;
+	int				proj;
 }					t_fdf;
 
+typedef struct 		s_line
+{
+	t_point			first;
+	t_point			last;
+	int				dx;
+	int				dy;
+	int				sx;
+	int				sy;
+	int				err1;
+	int				err2;
+}					t_line;
+
+int					validation(char *prog_name, t_map *map);
+void				parse_map(t_map *map, char *prog_name);
 void				error_message(const char *strs);
-int 				validation(t_fdf *data);
-void				free_all_structs(t_fdf *data);
-void				get_model_data(t_fdf *data);
+void				free_all_structs(t_fdf *data, t_map *map);
+
 #endif

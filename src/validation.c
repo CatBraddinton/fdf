@@ -47,7 +47,7 @@ static void	check_errors(char *s)
 			i++;
 		else if (s[i] == '-')
 			i++;
-		else if (s[i] == ' ')
+		else if (s[i] == ' ' || s[i] == '\t')
 		{
 			if (ft_isdigit(s[i + 1]) || s[i + 1] == '-' || (i > 0 &&
 			ft_isdigit(s[i - 1])))
@@ -58,10 +58,12 @@ static void	check_errors(char *s)
 			check_color(s, ++i);
 			i += 8;
 		}
+		else
+			error_message("wromg map");
 	}
 }
 
-static void	validate_map(int fd, t_fdf *data)
+static void	validate_map(int fd, t_map *map)
 {
 	char	*line;
 	int		temp;
@@ -70,13 +72,13 @@ static void	validate_map(int fd, t_fdf *data)
 	while ((get_next_line(fd, &line)) == 1)
 	{
 		temp = ft_count_words(line, ' ');
-		if (data->map->cols == 0)
-			data->map->cols = temp;
-		if (temp != data->map->cols)
+		if (map->cols == 0)
+			map->cols = temp;
+		if (temp != map->cols)
 			error_message("invalid map");
 		check_errors(line);
 		ft_strdel(&line);
-		data->map->rows++;
+		map->rows++;
 	}
 }
 
@@ -91,18 +93,16 @@ static void	validate_path_to_file(char *str)
 		error_message("incorrect file name");
 }
 
-int			validation(t_fdf *data)
+int			validation(char *prog_name, t_map *map)
 {
 	int fd;
 
-	validate_path_to_file(data->prog_name);
-	if ((fd = open(data->prog_name, O_RDONLY)) < 0)
+	validate_path_to_file(prog_name);
+	if ((fd = open(prog_name, O_RDONLY)) < 0)
 		error_message("failed to open the file");
-	data->map->cols = 0;
-	data->map->rows = 0;
-	data->map->max_depth = 0;
-	data->map->min_depth = 0;
-	validate_map(fd, data);
+	map->cols = 0;
+	map->rows = 0;
+	validate_map(fd, map);
 	close(fd);
 	return (1);
 }

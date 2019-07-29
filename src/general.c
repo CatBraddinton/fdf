@@ -18,10 +18,15 @@ void	error_message(const char *str)
 	exit(EXIT_FAILURE);
 }
 
-void	free_all_structs(t_fdf *data)
+void	free_all_structs(t_fdf *data, t_map *map)
 {
+	int i;
+
+	i = -1;
+	while (++i < map->rows)
+		free(map->points[i]);
+	free(map->points);
+	free(map);
 	free(data->prog_name);
-	free(data->map->points);
-	free(data->map);
 	free(data);
 }

@@ -1,6 +1,12 @@
 main.o
 structs_inits.o
 validation.o
+draw.o
+fdf.o
+errors.o
+file_parser.o
+general.o
+
 .DS_Store
 libft/*.o
 libft/libft.a
@@ -10,10 +16,7 @@ fdf
 CMakeLists.txt
 cmake-build-debug/CMakeCache.txt
 cmake-build-debug/CMakeFiles/clion-log.txt
-minilibx_macos/CMakeLists.txt
+
 cmake-build-debug/
-errors.o
-minilibx_macos/*.o
-minilibx_macos/libmlx.a
-draw.o
-fdf.o
+
+

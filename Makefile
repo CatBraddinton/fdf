@@ -6,9 +6,9 @@ MLXFLAGS = -lmlx -framework OpenGL -framework AppKit
 
 INCS := inc/fdf.h
 
-SRCS := src/main.c src/validation.c src/general.c src/fdf.c src/draw.c
+SRCS := src/main.c src/validation.c src/general.c src/file_parser.c
 
-OBJ := main.o validation.o general.o fdf.o draw.o
+OBJ := main.o validation.o general.o file_parser.o
 
 LIB_DIR := libft
 LIBFT := $(LIB_DIR)/libft.a
