@@ -59,4 +59,5 @@ void			parse_map(t_map *map, char *prog_name)
 		i++;
 		ft_strdel(&line);
 	}
+
 }
