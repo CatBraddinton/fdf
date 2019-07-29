@@ -15,3 +15,5 @@ cmake-build-debug/
 errors.o
 minilibx_macos/*.o
 minilibx_macos/libmlx.a
+draw.o
+fdf.o

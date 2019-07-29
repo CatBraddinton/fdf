@@ -91,12 +91,12 @@ static void	validate_path_to_file(char *str)
 		error_message("incorrect file name");
 }
 
-int			validation(char *str, t_fdf *data)
+int			validation(t_fdf *data)
 {
 	int fd;
 
-	validate_path_to_file(str);
-	if ((fd = open(str, O_RDONLY)) < 0)
+	validate_path_to_file(data->prog_name);
+	if ((fd = open(data->prog_name, O_RDONLY)) < 0)
 		error_message("failed to open the file");
 	data->map->cols = 0;
 	data->map->rows = 0;

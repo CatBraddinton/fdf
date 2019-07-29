@@ -24,12 +24,12 @@ int	main(int ac, char *av[])
 	if ((data->map = ft_memalloc(sizeof(t_map))) == NULL)
 		error_message("malloc allocation failed");
 	if ((data->map->points = ft_memalloc(data->map->cols *
-			data->map->cols * sizeof(t_point))) == NULL)
+			data->map->rows * sizeof(t_point))) == NULL)
 		error_message("malloc allocation failed");
-	validation(av[1], data);
-	free(data->map->points);
-	free(data->map);
-	free(data);
+	data->prog_name = ft_strdup(av[1]);
+	validation(data);
+	get_model_data(data);
+	free_all_structs(data);
 	system("leaks fdf");
 	return (0);
 }

@@ -25,33 +25,45 @@ typedef	struct 		s_point
 	unsigned long	color;
 }					t_point;
 
-typedef struct		s_mlx
+typedef struct 		s_map
 {
-	void			*mlx;
-	void			*win;
-	void			*img;
-}					t_mlx;
+	int 			cols;
+	int 			rows;
+	int 			min_depth;
+	int 			max_depth;
+	t_point			**points;
+}					t_map;
 
 typedef struct		s_img
 {
+	void			*img;
 	int				bits_per_pixel;
 	int				size_line;
 	int				endian;
 	char			*buf;
+	float			**z_buf;
 }					t_img;
 
 typedef struct		s_fdf
 {
-	t_mlx			mlx;
-	t_img			img;
-	int 			cols;
-	int 			rows;
+	char			*prog_name;
+	void			*mlx;
+	void			*win;
+	t_img			*img;
+	t_map			*map;
+	t_point			first;
+	t_point			last;
+	int 			dx;
+	int 			dy;
+	int 			sx;
+	int 			sy;
+	int 			err1;
+	int 			err2;
 	int 			proj;
 }					t_fdf;
 
 void				error_message(const char *strs);
-int 				validation(char *str, t_fdf *data);
-int					fdf(t_fdf *data, t_point *all, char *name);
-void				free_2d_arr(char **arr, int size);
-
+int 				validation(t_fdf *data);
+void				free_all_structs(t_fdf *data);
+void				get_model_data(t_fdf *data);
 #endif

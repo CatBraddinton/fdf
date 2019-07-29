@@ -17,3 +17,11 @@ void	error_message(const char *str)
 	ft_putendl(str);
 	exit(EXIT_FAILURE);
 }
+
+void	free_all_structs(t_fdf *data)
+{
+	free(data->prog_name);
+	free(data->map->points);
+	free(data->map);
+	free(data);
+}
