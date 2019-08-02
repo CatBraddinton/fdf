@@ -30,3 +30,14 @@ void	free_all_structs(t_fdf *data, t_map *map)
 	free(data->prog_name);
 	free(data);
 }
+
+void	init_transformation_params(t_param *transf)
+{
+	transf->scale = 0;
+	transf->rotate_x = 0;
+	transf->rotate_y = 0;
+	transf->rotate_z = 0;
+	transf->move_x = 0;
+	transf->move_y = 0;
+	transf->move_z = 0;
+}

@@ -1,7 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   drawer.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kdudko <kdudko@student.unit.ua>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/30 01:22:20 by kdudko            #+#    #+#             */
+/*   Updated: 2019/07/30 01:22:24 by kdudko           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/fdf.h"
 
-void	draw_line(t_fdf *data, t_point vec0, t_point vec1)
-{
+void	draw_line(t_fdf *data, t_point vec0, t_point vec1) {
 	t_line line;
 
 	line.dx = 1;
@@ -18,41 +29,34 @@ void	draw_line(t_fdf *data, t_point vec0, t_point vec1)
 		line.s = line.sy;
 	if (line.s == 0)
 		mlx_pixel_put(data->mlx, data->win, vec1.x, vec1.y, vec1.color);
-	if (line.sy <= line.sx)
-	{
+	if (line.sy <= line.sx) {
 		line.x = vec1.x;
 		line.y = vec1.y;
 		line.d = -line.sx;
 		line.s++;
-		while (line.s--)
-		{
+		while (line.s--) {
 			mlx_pixel_put(data->mlx, data->win, line.x, line.y, vec0.color);
 			line.x += line.dx;
 			line.d += 2 * line.sy;
-			if (line.d > 0)
-			{
+			if (line.d > 0) {
 				line.d -= 2 * line.sx;
 				line.y += line.dy;
 			}
 		}
 	}
-	if (line.sy > line.sx)
-	{
+	if (line.sy > line.sx) {
 		line.x = vec1.x;
 		line.y = vec1.y;
 		line.d = -line.sx;
 		line.s++;
-		while (line.s--)
-		{
+		while (line.s--) {
 			mlx_pixel_put(data->mlx, data->win, line.x, line.y, vec0.color);
 			line.y += line.dy;
 			line.d += 2 * line.sx;
-			if (line.d > 0)
-			{
+			if (line.d > 0) {
 				line.d -= 2 * line.sx;
 				line.x += line.dx;
 			}
 		}
 	}
 }
-

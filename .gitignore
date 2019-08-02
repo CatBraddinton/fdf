@@ -1,12 +1,12 @@
 main.o
 structs_inits.o
 validation.o
-draw.o
-fdf.o
-errors.o
+drawer.o
+hooks.o
+mlx_exec.o
 file_parser.o
 general.o
-
+render.o
 .DS_Store
 libft/*.o
 libft/libft.a

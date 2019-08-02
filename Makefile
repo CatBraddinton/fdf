@@ -2,13 +2,17 @@ NAME = fdf
 
 CC = clang
 CFLAGS = -Wall -Wextra -Werror
-MLXFLAGS = -lmlx -framework OpenGL -framework AppKit
+MLXFLAGS =
 
 INCS := inc/fdf.h
 
-SRCS := src/main.c src/validation.c src/general.c src/file_parser.c
+SRCS := src/main.c src/validation.c src/general.c src/file_parser.c \
+		src/render.c src/drawer.c src/mlx_exec.c src/hooks.c\
+		src/transform.c
 
-OBJ := main.o validation.o general.o file_parser.o
+
+OBJ := 	main.o validation.o general.o file_parser.o render.o drawer.o \
+		mlx_exec.o hooks.o transform.o
 
 LIB_DIR := libft
 LIBFT := $(LIB_DIR)/libft.a
