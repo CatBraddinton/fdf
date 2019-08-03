@@ -96,7 +96,7 @@ int					get_next_line(const int fd, char **line);
 int					count_digits(int num);
 unsigned long		ft_hex_to_ul(char *s);
 void				ft_swap(int *a, int *b);
-int					ft_int_part(float x);
-float 				ft_float_part(float x);
+int					ft_int_part(double x);
+float 				ft_float_part(double x);
 
 #endif

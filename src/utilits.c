@@ -10,11 +10,12 @@ void			error(char *str)
 
 static void		init_transformation(t_change *params, t_data *fdf)
 {
-	params->scale = 55;
+	(void)fdf;
+	params->scale = 10;
 	params->move_up = 0;
 	params->move_left = 0;
-	params->move_right = W_WINDOW / 2 - fdf->width * params->scale;
-	params->move_down = H_WINDOW / 2 - fdf->height * params->scale;
+	params->move_right = W_WINDOW / 2 - fdf->width;
+	params->move_down = H_WINDOW / 2 - fdf->height;
 	params->z_change = 10;
 	params->projection = ISO;
 }

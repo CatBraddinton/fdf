@@ -10,7 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_int_part(float x)
+int	ft_int_part(double x)
 {
-	return ((int)x);
+	int d;
+
+	d = x;
+	return (d);
 }

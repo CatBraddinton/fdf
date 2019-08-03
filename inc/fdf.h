@@ -40,6 +40,7 @@ typedef struct	s_data
 {
 	char 		*name;
 	t_point		**map;
+	t_point		**transformed;
 	int 		width;
 	int 		height;
 	void		*mlx;

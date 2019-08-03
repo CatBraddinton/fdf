@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-float	ft_float_part(float x)
+float	ft_float_part(double x)
 {
 	while (x >= 0)
 		x--;

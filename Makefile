@@ -2,7 +2,7 @@ NAME := fdf
 FT := libft.a
 
 CC := clang
-FLAGS := -Wall -Wextra -Werror
+FLAGS := -Wall -Wextra -Werror -fsanitize=address -g
 MLXFLAGS := -lmlx -framework OpenGL -framework AppKit
 
 SRC_DIR := src/
@@ -17,9 +17,12 @@ SOURCES := 	src/main.c\
 			src/render.c\
 			src/draw_lines.c\
 			src/get_color.c\
-			src/transform.c
+			src/transform.c\
+			src/draw_straight_line.c\
+			src/display_image.c\
+
 OBJECTS := 	main.o utilits.o validation.o fparser.o render.o draw_lines.o\
-			get_color.o transform.o
+			get_color.o transform.o draw_straight_line.o display_image.o
 
 LIBFT := $(LIB_DIR)$(FT)
 INCLUDES := $(INC_DIR)fdf.h
