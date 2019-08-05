@@ -83,4 +83,7 @@ void		validate_input(t_data *fdf)
 		ft_strdel(&line);
 		fdf->height++;
 	}
+	if (fdf->width == 0 && fdf->height == 0)
+		error("error, map is empty");
+	close(fd);
 }

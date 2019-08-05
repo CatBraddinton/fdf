@@ -1,7 +1,7 @@
 #ifndef HOOKS_H
 # define HOOKS_H
 
-# define SPACE	49
+
 # define ESC	53
 # define ZOOM_P	69
 # define ZOOM_M	78

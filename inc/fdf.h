@@ -16,6 +16,7 @@
 # define W_WINDOW 	1920
 # define H_WINDOW 	1080
 # define ISO		1
+# define SPACE 		49
 
 typedef struct	s_point
 {
@@ -39,8 +40,6 @@ typedef struct 	s_change
 typedef struct	s_data
 {
 	char 		*name;
-	t_point		**map;
-	t_point		**transformed;
 	int 		width;
 	int 		height;
 	void		*mlx;
@@ -56,7 +55,9 @@ typedef struct	s_data
 void	error(char *str);
 void	validate_input(t_data *fdf);
 void	init_data(t_data *fdf, char *name);
-void	fparser(t_data *fdf);
-void	init_mlx(t_data *dfd);
-void	render_image(t_data *fdf);
+void	fparser(t_data *fdf, t_point **map);
+int		hook_key(int key, t_data *fdf);
+void	display_image(t_data *fdf, t_point **map);
+void	allocate_map(t_point ***map, int rows, int cols);
+void	init_transformation(t_change *params, t_data *fdf);
 #endif
