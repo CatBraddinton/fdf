@@ -1,6 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fparser.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kdudko <kdudko@student.unit.ua>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/08/06 14:42:34 by kdudko            #+#    #+#             */
+/*   Updated: 2019/08/06 14:42:36 by kdudko           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/fdf.h"
-
-
 
 static void	parse_str(t_point **map, char *line, int size, int y)
 {
@@ -14,10 +24,10 @@ static void	parse_str(t_point **map, char *line, int size, int y)
 		map[y][i].x = i;
 		map[y][i].y = y;
 		map[y][i].z = ft_atoi(arr[i]);
-		if ((ft_strstr(arr[i], ",0x")) == NULL)
+		if ((ft_strchr(arr[i], ',')) == NULL)
 			map[y][i].color = COLOR;
 		else
-			map[y][i].color = ft_hex_to_ul(ft_strstr(arr[i], ",0x") + 1);
+			map[y][i].color = ft_hex_to_ul((ft_strchr(arr[i], ',')) + 1);
 		i++;
 	}
 	while (--i > 0)
@@ -27,11 +37,11 @@ static void	parse_str(t_point **map, char *line, int size, int y)
 	free(arr);
 }
 
-void			fparser(t_data *fdf, t_point **map)
+void		fparser(t_data *fdf, t_point **map)
 {
-	int fd;
-	char *line;
-	int i;
+	int		fd;
+	char	*line;
+	int		i;
 
 	i = 0;
 	line = NULL;
@@ -46,4 +56,3 @@ void			fparser(t_data *fdf, t_point **map)
 	}
 	close(fd);
 }
-
