@@ -1,14 +1,15 @@
 #include "../inc/draw_lines.h"
 
-static void iso(int *x, int *y, int z)
+void	iso(int *x, int *y, int z)
 {
-	int previous_x;
-	int previous_y;
+	int prev_x;
+	int prev_y;
 
-	previous_x = *x;
-	previous_y = *y;
-	*x = (previous_x - previous_y) * cos(0.523599);
-	*y = -z + (previous_x + previous_y) * sin(0.523599);
+	prev_x = *x;
+	prev_y = *y;
+	*x = 0.7071 * prev_x + 0.7071 * z;
+	*y = -0.4082 * z + 0.4082 * prev_x + 0.8166 * prev_y;
+
 }
 
 void	change(t_point ***new_map, t_point **map, t_change params, t_data *fdf)
@@ -24,11 +25,12 @@ void	change(t_point ***new_map, t_point **map, t_change params, t_data *fdf)
 		{
 			(*new_map)[y][x].x = map[y][x].x * params.scale;
 			(*new_map)[y][x].y = map[y][x].y * params.scale;
-			(*new_map)[y][x].z =  map[y][x].z;
+			(*new_map)[y][x].z = map[y][x].z * params.scale;
 			(*new_map)[y][x].color = map[y][x].color;
 			if (params.projection == ISO)
 				iso(&((*new_map)[y][x].x), &((*new_map)[y][x].y),
 						(*new_map)[y][x].z);
+			(*new_map)[y][x].x += params.center_x;
 			x++;
 		}
 		y++;

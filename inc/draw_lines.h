@@ -5,19 +5,20 @@
 
 typedef struct	s_draw
 {
-	int 		dx;
-	int 		dy;
 	double 		grad;
-	double 		inter_x;
-	double 		inter_y;
-	int 		x0;
-	int 		y0;
-	int 		x1;
-	int 		y1;
+	double 		dx;
+	double 		dy;
+	double		inter_y;
+	double		inter_x;
 	int 		x;
 	int 		y;
 	int 		color_p0;
 	int 		color_p1;
+	int 		x0;
+	int 		y0;
+	int 		x1;
+	int 		y1;
+
 }				t_draw;
 
 void	draw_lines(t_point p0, t_point p1, t_data *fdf);

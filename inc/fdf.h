@@ -35,6 +35,8 @@ typedef struct 	s_change
 	int 		move_down;
 	int 		z_change;
 	int 		projection;
+	int 		center_x;
+	int 		center_y;
 }				t_change;
 
 typedef struct	s_data

@@ -14,10 +14,12 @@ void		init_transformation(t_change *params, t_data *fdf)
 	params->scale = 55;
 	params->move_up = 0;
 	params->move_left = 0;
-	params->move_right = W_WINDOW / 2 - fdf->width;
-	params->move_down = H_WINDOW / 2 - fdf->height;
+	params->move_right = 0;
+	params->move_down = 0;
 	params->z_change = 10;
 	params->projection = ISO;
+	params->center_x = W_WINDOW / 2;
+	params->center_y = H_WINDOW / 2;
 }
 
 void			init_data(t_data *fdf, char *name)
