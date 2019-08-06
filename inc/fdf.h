@@ -12,7 +12,7 @@
 # include <fcntl.h>
 # include <math.h>
 
-# define COLOR 		0x76FFFF
+# define COLOR 		0xFAF2FF
 # define W_WINDOW 	1920
 # define H_WINDOW 	1080
 # define ISO		1
@@ -37,6 +37,9 @@ typedef struct 	s_change
 	int 		projection;
 	int 		center_x;
 	int 		center_y;
+	double 		x_angle;
+	double 		y_angle;
+	double 		z_angle;
 }				t_change;
 
 typedef struct	s_data
@@ -51,6 +54,7 @@ typedef struct	s_data
 	int 		bpp;
 	int 		size_line;
 	int 		endian;
+	t_point		**map;
 	t_change	params;
 }				t_data;
 
