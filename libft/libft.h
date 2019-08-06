@@ -97,6 +97,6 @@ int					count_digits(int num);
 unsigned long		ft_hex_to_ul(char *s);
 void				ft_swap(int *a, int *b);
 int					ft_int_part(double x);
-float 				ft_float_part(double x);
+float				ft_float_part(double x);
 
 #endif
