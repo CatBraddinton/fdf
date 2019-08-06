@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static int	count_intl(const char *s, int base)
+static int	count_int(const char *s, int base)
 {
 	int				power;
 	unsigned long	res;

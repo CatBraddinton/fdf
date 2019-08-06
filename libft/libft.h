@@ -27,6 +27,7 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
+int 				ft_atoi_base(const char *c, int base);
 void				*ft_memset(void *b, int c, size_t len);
 void				ft_bzero(void *s, size_t n);
 void				*ft_memcpy(void *dst, const void *src, size_t n);
@@ -94,7 +95,6 @@ char				*ft_strndup(const char *s1, size_t n);
 size_t				ft_strlcpy(char *dst, char const *src, size_t dstsize);
 int					get_next_line(const int fd, char **line);
 int					count_digits(int num);
-unsigned long		ft_hex_to_ul(char *s);
 void				ft_swap(int *a, int *b);
 int					ft_int_part(double x);
 float				ft_float_part(double x);

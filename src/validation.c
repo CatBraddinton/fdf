@@ -41,13 +41,11 @@ static void	check_errors(char *s)
 	int i;
 
 	i = 0;
-	while (s[i] != 0)
+	while (s[i] != '\0')
 	{
-		if (ft_isdigit(s[i]))
+		if (ft_isdigit(s[i]) || s[i] == '-')
 			i++;
-		else if (s[i] == '-')
-			i++;
-		else if (s[i] == ' ' || s[i] == '\t')
+		else if (s[i] == ' ')
 		{
 			if (ft_isdigit(s[i + 1]) ||
 			s[i + 1] == '-' || (i > 0 && ft_isdigit(s[i - 1])))
@@ -58,8 +56,7 @@ static void	check_errors(char *s)
 			check_color(s, ++i);
 			i += 8;
 		}
-		else
-			error("wromg map");
+
 	}
 }
 
@@ -97,5 +94,7 @@ void		validate_input(t_data *fdf)
 	}
 	if (fdf->width == 0 && fdf->height == 0)
 		error("error, map is empty");
+	if (fdf->width == 1 && fdf->height == 1)
+		error("map has 1 point, give me bigger map");
 	close(fd);
 }

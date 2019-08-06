@@ -27,7 +27,7 @@ static void	parse_str(t_point **map, char *line, int size, int y)
 		if ((ft_strchr(arr[i], ',')) == NULL)
 			map[y][i].color = COLOR;
 		else
-			map[y][i].color = ft_hex_to_ul((ft_strchr(arr[i], ',')) + 1);
+			map[y][i].color = ft_atoi_base((ft_strchr(arr[i], ',')) + 1, 16);
 		i++;
 	}
 	while (--i > 0)

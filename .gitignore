@@ -11,5 +11,12 @@ CMakeLists.txt
 cmake-build-debug/CMakeCache.txt
 cmake-build-debug/CMakeFiles/clion-log.txt
 cmake-build-debug/
-
-
+change_angles.o
+display_image.o
+draw_lines.o
+draw_straight_line.o
+fparser.o
+get_color.o
+inits.o
+key_presses.o
+utilits.o
