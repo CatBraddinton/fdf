@@ -1,7 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kdudko <kdudko@student.unit.ua>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/08/06 14:36:58 by kdudko            #+#    #+#             */
+/*   Updated: 2019/08/06 14:37:04 by kdudko           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/fdf.h"
 
-
-int main(int ac, char *av[])
+int	main(int ac, char *av[])
 {
 	t_data	*fdf;
 	t_point	**map;
@@ -18,10 +29,10 @@ int main(int ac, char *av[])
 	fdf->map = map;
 	if ((fdf->mlx = mlx_init()) == NULL)
 		error("mlx initialization failed");
-	if ((fdf->window = mlx_new_window(fdf->mlx, W_WINDOW, H_WINDOW,
-									  fdf->name)) == NULL)
+	fdf->window = mlx_new_window(fdf->mlx, W_WINDOW, H_WINDOW, fdf->name);
+	if (fdf->window == NULL)
 		error("mlx failed to create a window");
 	mlx_key_hook(fdf->window, hook_key, fdf);
 	mlx_loop(fdf->mlx);
-	return 0;
+	return (0);
 }
