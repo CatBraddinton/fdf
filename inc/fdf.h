@@ -73,7 +73,7 @@ void			fparser(t_data *fdf, t_point **map);
 void			init_data(t_data *fdf, char *name);
 void			init_transformation(t_change *params, t_data *fdf);
 
-int 			key_press(int keycode, t_data *fdf);
+int				key_press(int keycode, t_data *fdf);
 void			display_image(t_data *fdf, t_point **map);
 void			allocate_map(t_point ***map, int rows, int cols);
 
