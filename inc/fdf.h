@@ -41,10 +41,6 @@ typedef struct	s_point
 typedef struct	s_change
 {
 	int			scale;
-	int			move_up;
-	int			move_left;
-	int			move_right;
-	int			move_down;
 	int			z_change;
 	int			projection;
 	int			center_x;
@@ -72,10 +68,13 @@ typedef struct	s_data
 
 void			error(char *str);
 void			validate_input(t_data *fdf);
-void			init_data(t_data *fdf, char *name);
 void			fparser(t_data *fdf, t_point **map);
-int				hook_key(int key, t_data *fdf);
+
+void			init_data(t_data *fdf, char *name);
+void			init_transformation(t_change *params, t_data *fdf);
+
+int 			key_press(int keycode, t_data *fdf);
 void			display_image(t_data *fdf, t_point **map);
 void			allocate_map(t_point ***map, int rows, int cols);
-void			init_transformation(t_change *params, t_data *fdf);
+
 #endif

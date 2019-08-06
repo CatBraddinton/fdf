@@ -23,9 +23,12 @@
 # define RIGHT	124
 # define Z_UP	116
 # define Z_DOWN	121
-# define ROT_X	7
-# define ROT_Y	8
-# define ROT_Z	6
+# define ROT_XP	12
+# define ROT_XM	14
+# define ROT_YP	0
+# define ROT_YM	2
+# define ROT_ZP	6
+# define ROT_ZM	8
 # define I		34
 # define P		35
 
