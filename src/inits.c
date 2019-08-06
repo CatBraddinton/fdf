@@ -21,11 +21,7 @@ void	init_transformation(t_change *params, t_data *fdf)
 	temp = W_WINDOW / fdf->width / 2;
 	temp2 = H_WINDOW / fdf->height / 2;
 	params->scale = (temp < temp2) ? temp : temp2;
-	params->move_up = 0;
-	params->move_left = 0;
-	params->move_right = 0;
-	params->move_down = 0;
-	params->z_change = 10;
+	params->z_change = 20;
 	params->projection = ISO;
 	params->center_x = W_WINDOW / 2;
 	params->center_y = H_WINDOW / 2;

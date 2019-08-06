@@ -1,96 +1,66 @@
-#include "../inc/draw_lines.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   display_image.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kdudko <kdudko@student.unit.ua>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/08/06 15:04:21 by kdudko            #+#    #+#             */
+/*   Updated: 2019/08/06 15:04:22 by kdudko           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void		transform_x_axis(int *y, int *z, double alpha)
+#include "../inc/render.h"
+
+void	move(t_point ***nmap, t_change params, int y, int x)
 {
-	int prev_y;
-
-	prev_y = *y;
-	*y = prev_y * cos(alpha) + *z * sin(alpha);
-	*z = -prev_y * sin(alpha) + *z * cos(alpha);
+	x_axis(&((*nmap)[y][x].y), &((*nmap)[y][x].z), params.x_angle);
+	y_axis(&((*nmap)[y][x].x), &((*nmap)[y][x].z), params.y_angle);
+	z_axis(&((*nmap)[y][x].x), &((*nmap)[y][x].y), params.z_angle);
+	if (params.projection == ISO)
+		iso(&((*nmap)[y][x].x), &((*nmap)[y][x].y), (*nmap)[y][x].z);
+	(*nmap)[y][x].x += params.center_x;
+	(*nmap)[y][x].y += params.center_y;
 }
 
-void		transform_y_axis(int *x, int *z, double beta)
-{
-	int prev;
-
-	prev = *x;
-	*x = prev * cos(beta) + *z * sin(beta);
-	*z = -prev * sin(beta) + *z * cos(beta);
-}
-
-void		transform_z_axis(int *x, int *y, double gamma)
-{
-	int prev_x;
-	int prev_y;
-
-	prev_x = *x;
-	prev_y = *y;
-	*x = prev_x * cos(gamma) - prev_y * sin(gamma);
-	*y = prev_x * sin(gamma) + prev_y * cos(gamma);
-}
-
-void	iso(int *x, int *y, int z)
-{
-	int prev_x;
-	int prev_y;
-
-	prev_x = *x;
-	prev_y = *y;
-	*x = (prev_x - prev_y) * cos(0.523599);
-	*y = -z + (prev_x + prev_y) * sin(0.523599);
-}
-
-void	change(t_point ***new_map, t_point **map, t_change params, t_data *fdf)
+void	change(t_point ***nmap, t_point **map, t_change params, t_data *fdf)
 {
 	int y;
 	int x;
 
-	y = 0;
-	while (y < fdf->height)
+	y = -1;
+	while (++y < fdf->height)
 	{
-		x = 0;
-		while (x < fdf->width)
+		x = -1;
+		while (++x < fdf->width)
 		{
-
-			(*new_map)[y][x].x = map[y][x].x * params.scale -
+			(*nmap)[y][x].x = map[y][x].x * params.scale -
 					(fdf->width * params.scale) / 2;
-			(*new_map)[y][x].y = map[y][x].y * params.scale -
-								 (fdf->height * params.scale) / 2;
-			(*new_map)[y][x].z = map[y][x].z * params.scale * params.z_change
+			(*nmap)[y][x].y = map[y][x].y * params.scale - (fdf->height *
+					params.scale) / 2;
+			(*nmap)[y][x].z = map[y][x].z * params.scale * params.z_change
 					/ 100;
-			if (map[y][x].z != 0)
-				(*new_map)[y][x].color = 0xEBCFFF;
+			if (map[y][x].z != 0 && map[y][x].color == COLOR)
+				(*nmap)[y][x].color = 0xEBCFFF;
 			else
-				(*new_map)[y][x].color = map[y][x].color;
-//			transform_x_axis(&((*new_map)[y][x].y), &((*new_map)[y][x].z),
-//					params.x_angle);
-//			transform_y_axis(&((*new_map)[y][x].x), &((*new_map)[y][x].z),
-//					params.y_angle);
-//			transform_z_axis(&((*new_map)[y][x].x), &((*new_map)[y][x].y),
-//					params.z_angle);
-			if (params.projection == ISO)
-				iso(&((*new_map)[y][x].x), &((*new_map)[y][x].y),
-					(*new_map)[y][x].z);
-			(*new_map)[y][x].x += params.center_x;
-			(*new_map)[y][x].y += params.center_y;
-			x++;
+				(*nmap)[y][x].color = map[y][x].color;
+			move(nmap, params, y, x);
 		}
-		y++;
 	}
 }
 
-void		display_image(t_data *fdf, t_point **map)
+void	display_image(t_data *fdf, t_point **map)
 {
 	int		y;
 	int		x;
 	t_point	**new_map;
 
-	y = 0;
 	allocate_map(&new_map, fdf->height, fdf->width);
 	change(&new_map, map, fdf->params, fdf);
 	fdf->image = mlx_new_image(fdf->mlx, W_WINDOW, H_WINDOW);
-	fdf->ibuff = mlx_get_data_addr(fdf->image, &(fdf->bpp),
-								   &(fdf->size_line), &(fdf->endian));
+	fdf->ibuff = mlx_get_data_addr(fdf->image, &(fdf->bpp), &(fdf->size_line),
+			&(fdf->endian));
+	y = 0;
 	while (y < fdf->height)
 	{
 		x = 0;

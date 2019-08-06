@@ -32,7 +32,7 @@ int	main(int ac, char *av[])
 	fdf->window = mlx_new_window(fdf->mlx, W_WINDOW, H_WINDOW, fdf->name);
 	if (fdf->window == NULL)
 		error("mlx failed to create a window");
-	mlx_key_hook(fdf->window, hook_key, fdf);
+	mlx_hook(fdf->window, 2, 0, key_press, fdf);
 	mlx_loop(fdf->mlx);
 	return (0);
 }
