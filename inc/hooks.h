@@ -1,7 +1,7 @@
 #ifndef HOOKS_H
 # define HOOKS_H
 
-
+# define SPACE 		49
 # define ESC	53
 # define ZOOM_P	69
 # define ZOOM_M	78
@@ -14,7 +14,8 @@
 # define ROT_X	7
 # define ROT_Y	8
 # define ROT_Z	6
-
+# define I		34
+# define P		35
 
 
 #endif

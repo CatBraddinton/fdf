@@ -59,7 +59,7 @@ void	change(t_point ***new_map, t_point **map, t_change params, t_data *fdf)
 			(*new_map)[y][x].z = map[y][x].z * params.scale * params.z_change
 					/ 100;
 			if (map[y][x].z != 0)
-				(*new_map)[y][x].color = 0xA6800AD;
+				(*new_map)[y][x].color = 0xEBCFFF;
 			else
 				(*new_map)[y][x].color = map[y][x].color;
 //			transform_x_axis(&((*new_map)[y][x].y), &((*new_map)[y][x].z),

@@ -48,22 +48,21 @@ int		hook_key(int key, t_data *fdf)
 		exit(EXIT_SUCCESS);
 	if (key == SPACE)
 		display_image(fdf, fdf->map);
-	if (fdf->image && (key == Z_UP || key == Z_DOWN))
+	if (fdf->image)
 	{
 		mlx_destroy_image(fdf->mlx, fdf->image);
 		if (key == Z_UP)
-			fdf->params.z_change += 1;
+			fdf->params.z_change += 5;
 		if (key == Z_DOWN)
-			fdf->params.z_change -= 1;
-		display_image(fdf, fdf->map);
-	}
-	if (fdf->image && (key == ZOOM_M || key == ZOOM_P))
-	{
-		mlx_destroy_image(fdf->mlx, fdf->image);
-		if (key == ZOOM_M)
+			fdf->params.z_change -= 5;
+		if (key == ZOOM_P)
 			fdf->params.scale++;
 		if (key == ZOOM_M)
 			fdf->params.scale--;
+		if (key == I)
+			fdf->params.projection = ISO;
+		if (key == P)
+			fdf->params.projection = PARALLEL;
 		display_image(fdf, fdf->map);
 	}
 	return (0);

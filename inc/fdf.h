@@ -12,11 +12,12 @@
 # include <fcntl.h>
 # include <math.h>
 
-# define COLOR 		0xFAF2FF
-# define W_WINDOW 	1920
-# define H_WINDOW 	1080
+# define COLOR 		0x6200A3
+# define W_WINDOW 	2300
+# define H_WINDOW 	1700
 # define ISO		1
-# define SPACE 		49
+# define PARALLEL	2
+
 
 typedef struct	s_point
 {
