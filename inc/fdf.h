@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fdf.h                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kdudko <kdudko@student.unit.ua>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/08/06 14:52:44 by kdudko            #+#    #+#             */
+/*   Updated: 2019/08/06 14:52:46 by kdudko           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FDF_H
 # define FDF_H
 
@@ -14,57 +26,56 @@
 
 # define COLOR 		0x6200A3
 # define W_WINDOW 	2300
-# define H_WINDOW 	1700
+# define H_WINDOW 	1300
 # define ISO		1
 # define PARALLEL	2
 
-
 typedef struct	s_point
 {
-	int 		x;
-	int 		y;
-	int 		z;
-	int 		color;
+	int			x;
+	int			y;
+	int			z;
+	int			color;
 }				t_point;
 
-typedef struct 	s_change
+typedef struct	s_change
 {
-	int 		scale;
-	int 		move_up;
-	int 		move_left;
-	int 		move_right;
-	int 		move_down;
-	int 		z_change;
-	int 		projection;
-	int 		center_x;
-	int 		center_y;
-	double 		x_angle;
-	double 		y_angle;
-	double 		z_angle;
+	int			scale;
+	int			move_up;
+	int			move_left;
+	int			move_right;
+	int			move_down;
+	int			z_change;
+	int			projection;
+	int			center_x;
+	int			center_y;
+	double		x_angle;
+	double		y_angle;
+	double		z_angle;
 }				t_change;
 
 typedef struct	s_data
 {
-	char 		*name;
-	int 		width;
-	int 		height;
+	char		*name;
+	int			width;
+	int			height;
 	void		*mlx;
 	void		*window;
 	void		*image;
-	char 		*ibuff;
-	int 		bpp;
-	int 		size_line;
-	int 		endian;
+	char		*ibuff;
+	int			bpp;
+	int			size_line;
+	int			endian;
 	t_point		**map;
 	t_change	params;
 }				t_data;
 
-void	error(char *str);
-void	validate_input(t_data *fdf);
-void	init_data(t_data *fdf, char *name);
-void	fparser(t_data *fdf, t_point **map);
-int		hook_key(int key, t_data *fdf);
-void	display_image(t_data *fdf, t_point **map);
-void	allocate_map(t_point ***map, int rows, int cols);
-void	init_transformation(t_change *params, t_data *fdf);
+void			error(char *str);
+void			validate_input(t_data *fdf);
+void			init_data(t_data *fdf, char *name);
+void			fparser(t_data *fdf, t_point **map);
+int				hook_key(int key, t_data *fdf);
+void			display_image(t_data *fdf, t_point **map);
+void			allocate_map(t_point ***map, int rows, int cols);
+void			init_transformation(t_change *params, t_data *fdf);
 #endif
