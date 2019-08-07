@@ -30,13 +30,10 @@ typedef struct	s_draw
 	int			y0;
 	int			x1;
 	int			y1;
-
 }				t_draw;
 
 void			init_line(t_draw *line, t_point p0, t_point p1);
 void			draw_lines(t_point p0, t_point p1, t_data *fdf);
-void			draw_straight_line(t_data *fdf, t_draw *line, t_point p0,
-				t_point p1);
 void			fdf_put_pixel(t_data *fdf, int x, int y, int color);
 
 void			iso(int *x, int *y, int z);

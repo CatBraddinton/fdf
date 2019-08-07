@@ -16,25 +16,28 @@
 int	key_press2(int keycode, t_data *fdf)
 {
 	if (keycode == UP)
-		fdf->params.center_y -= 20;
+		fdf->params.center_y -= 10;
 	if (keycode == DOWN)
-		fdf->params.center_y += 20;
+		fdf->params.center_y += 10;
 	if (keycode == LEFT)
-		fdf->params.center_x -= 20;
+		fdf->params.center_x -= 10;
 	if (keycode == RIGHT)
-		fdf->params.center_x += 20;
+		fdf->params.center_x += 10;
 	if (keycode == ROT_XP)
-		fdf->params.x_angle += 0.05;
+		if (fdf->params.x_angle < 360)
+			fdf->params.x_angle += 0.01;
 	if (keycode == ROT_XM)
-		fdf->params.x_angle -= 0.05;
+		fdf->params.x_angle -= 0.01;
 	if (keycode == ROT_YP)
-		fdf->params.y_angle += 0.05;
+		if (fdf->params.y_angle < 360)
+			fdf->params.y_angle += 0.01;
 	if (keycode == ROT_YM)
-		fdf->params.y_angle -= 0.05;
+		fdf->params.y_angle -= 0.01;
 	if (keycode == ROT_ZP)
-		fdf->params.z_angle += 0.05;
+		if (fdf->params.z_angle < 360)
+			fdf->params.z_angle += 0.01;
 	if (keycode == ROT_ZM)
-		fdf->params.z_angle -= 0.05;
+		fdf->params.z_angle -= 0.01;
 	return (1);
 }
 
@@ -58,7 +61,7 @@ int	key_press(int keycode, t_data *fdf)
 		if (keycode == I)
 			fdf->params.projection = ISO;
 		if (keycode == P)
-			fdf->params.projection = PERSPECTIVE;
+			fdf->params.projection = PARALLEL;
 		key_press2(keycode, fdf);
 		display_image(fdf, fdf->map);
 	}
