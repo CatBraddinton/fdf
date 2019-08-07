@@ -14,13 +14,12 @@ SOURCES := 	src/main.c\
 			src/validation.c\
 			src/fparser.c\
 			src/draw_lines.c\
-			src/get_color.c\
 			src/change_angles.c\
 			src/display_image.c\
 			src/inits.c\
 			src/key_presses.c\
 			src/draw_infomenu.c
-OBJECTS := 	main.o utilits.o validation.o fparser.o draw_lines.o get_color.o\
+OBJECTS := 	main.o utilits.o validation.o fparser.o draw_lines.o\
 			change_angles.o display_image.o inits.o key_presses.o\
 			draw_infomenu.o
 
