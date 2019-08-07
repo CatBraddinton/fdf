@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_presses.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kdudko <kdudko@student.unit.ua>            +#+  +:+       +#+        */
+/*   By: kdudko <kdudko@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 19:52:19 by kdudko            #+#    #+#             */
-/*   Updated: 2019/08/06 19:52:21 by kdudko           ###   ########.fr       */
+/*   Updated: 2019/08/07 11:29:20 by kdudko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	key_press(int keycode, t_data *fdf)
 		if (keycode == I)
 			fdf->params.projection = ISO;
 		if (keycode == P)
-			fdf->params.projection = PERSPECTIVE;
+			fdf->params.projection = PARALLEL;
 		key_press2(keycode, fdf);
 		display_image(fdf, fdf->map);
 	}
