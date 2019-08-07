@@ -25,9 +25,9 @@ void	draw_straight_line(t_data *fdf, t_draw *line, t_point p0, t_point p1)
 		fdf_put_pixel(fdf, line->x, line->y, line->color_p0);
 		line->x++;
 	}
-	while (line->y < line->y1)
-	{
-		fdf_put_pixel(fdf, line->x, line->y, line->color_p0);
-		line->y++;
-	}
+//	while (line->y < line->y1)
+//	{
+//		fdf_put_pixel(fdf, line->x, line->y, line->color_p0);
+//		line->y++;
+//	}
 }

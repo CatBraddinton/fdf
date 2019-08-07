@@ -28,7 +28,7 @@ void		fdf_put_pixel(t_data *fdf, int x, int y, int color)
 
 static void	draw_line_y(t_draw *line, t_data *fdf)
 {
-	line->grad = (double)line->dx / line->dy;
+	line->grad = line->dx / line->dy;
 	line->inter_x = line->x0 + line->grad;
 	if (line->x1 < line->x0)
 		line->grad *= -1;
@@ -47,7 +47,7 @@ static void	draw_line_y(t_draw *line, t_data *fdf)
 
 static void	draw_line_x(t_draw *line, t_data *fdf)
 {
-	line->grad = (double)line->dy / line->dx;
+	line->grad = line->dy / line->dx;
 	if (line->y1 < line->y0)
 		line->grad *= -1;
 	line->inter_y = line->y0 + line->grad;

@@ -24,14 +24,10 @@ static void	check_color(char *s, int i)
 	i++;
 	while (s[i] != '\0' && j < 6)
 	{
-		if (s[i] >= '0' && s[i] <= '9')
-			i++;
-		else if (s[i] >= 'A' && s[i] <= 'F')
-			i++;
-		else if (s[i] >= 'a' && s[i] <= 'f')
-			i++;
-		else
+		if ((!(s[i] >= '0' && s[i] <= '9') && !(s[i] >= 'A' && s[i] <= 'F') &&
+				!(s[i] >= 'a' && s[i] <= 'f')))
 			error("map is invalid");
+		i++;
 		j++;
 	}
 }
@@ -45,18 +41,14 @@ static void	check_errors(char *s)
 	{
 		if (ft_isdigit(s[i]) || s[i] == '-')
 			i++;
-		else if (s[i] == ' ')
-		{
-			if (ft_isdigit(s[i + 1]) ||
-			s[i + 1] == '-' || (i > 0 && ft_isdigit(s[i - 1])))
+		else if ((s[i] == ' ') && ((ft_isdigit(s[i + 1])) || (s[i + 1] == '-')
+		|| ((i > 0 && ft_isdigit(s[i - 1])))))
 				i++;
-		}
 		else if (s[i] == ',')
 		{
 			check_color(s, ++i);
 			i += 8;
 		}
-
 	}
 }
 

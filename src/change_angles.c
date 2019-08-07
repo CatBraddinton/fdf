@@ -19,8 +19,8 @@ void	x_axis(int *y, int *z, double x_angle)
 
 	prev_y = *y;
 	prev_z = *z;
-	*y = prev_y * cos(x_angle) + prev_z * sin(x_angle);
-	*z = -prev_y * sin(x_angle) + prev_z * cos(x_angle);
+	*y = prev_y * cos(x_angle) - prev_z * sin(x_angle);
+	*z = prev_y * sin(x_angle) + prev_z * cos(x_angle);
 }
 
 void	y_axis(int *x, int *z, double y_angle)

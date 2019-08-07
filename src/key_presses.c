@@ -58,7 +58,7 @@ int	key_press(int keycode, t_data *fdf)
 		if (keycode == I)
 			fdf->params.projection = ISO;
 		if (keycode == P)
-			fdf->params.projection = PARALLEL;
+			fdf->params.projection = PERSPECTIVE;
 		key_press2(keycode, fdf);
 		display_image(fdf, fdf->map);
 	}
