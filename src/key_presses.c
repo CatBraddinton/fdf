@@ -25,19 +25,19 @@ int	key_press2(int keycode, t_data *fdf)
 		fdf->params.center_x += 10;
 	if (keycode == ROT_XP)
 		if (fdf->params.x_angle < 360)
-			fdf->params.x_angle += 0.01;
+			fdf->params.x_angle += 0.05;
 	if (keycode == ROT_XM)
-		fdf->params.x_angle -= 0.01;
+		fdf->params.x_angle -= 0.05;
 	if (keycode == ROT_YP)
 		if (fdf->params.y_angle < 360)
-			fdf->params.y_angle += 0.01;
+			fdf->params.y_angle += 0.05;
 	if (keycode == ROT_YM)
-		fdf->params.y_angle -= 0.01;
+		fdf->params.y_angle -= 0.05;
 	if (keycode == ROT_ZP)
 		if (fdf->params.z_angle < 360)
-			fdf->params.z_angle += 0.01;
+			fdf->params.z_angle += 0.05;
 	if (keycode == ROT_ZM)
-		fdf->params.z_angle -= 0.01;
+		fdf->params.z_angle -= 0.05;
 	return (1);
 }
 
@@ -51,9 +51,11 @@ int	key_press(int keycode, t_data *fdf)
 	{
 		mlx_destroy_image(fdf->mlx, fdf->image);
 		if (keycode == Z_UP)
-			fdf->params.z_change += 5;
+			if (fdf->params.z_change < 100)
+				fdf->params.z_change += 5;
 		if (keycode == Z_DOWN)
-			fdf->params.z_change -= 5;
+			if (fdf->params.z_change > -100)
+				fdf->params.z_change -= 5;
 		if (keycode == ZOOM_P)
 			fdf->params.scale++;
 		if (keycode == ZOOM_M)
