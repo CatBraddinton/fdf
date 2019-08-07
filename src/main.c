@@ -26,6 +26,10 @@ int	main(int ac, char *av[])
 	allocate_map(&map, fdf->height, fdf->width);
 	fparser(fdf, map);
 	init_transformation(&(fdf->params), fdf);
+	fdf->camera = (t_camera *)malloc(sizeof(t_camera));
+	if (fdf->camera == NULL)
+		error("failed to set the camera");
+	set_camepa(fdf->camera);
 	fdf->map = map;
 	if ((fdf->mlx = mlx_init()) == NULL)
 		error("mlx initialization failed");
