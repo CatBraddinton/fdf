@@ -25,7 +25,7 @@ static void	check_color(char *s, int i)
 	while (s[i] != '\0' && j < 6)
 	{
 		if ((!(s[i] >= '0' && s[i] <= '9') && !(s[i] >= 'A' && s[i] <= 'F') &&
-				!(s[i] >= 'a' && s[i] <= 'f')))
+			 !(s[i] >= 'a' && s[i] <= 'f')))
 			error("map is invalid");
 		i++;
 		j++;
