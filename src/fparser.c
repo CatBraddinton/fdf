@@ -30,9 +30,11 @@ static void	parse_str(t_point **map, char *line, int size, int y)
 			map[y][i].color = ft_atoi_base((ft_strchr(arr[i], ',')) + 1, 16);
 		i++;
 	}
-	while (--i > 0)
+	i = 0;
+	while (i < size)
 	{
-		ft_strdel(&arr[i]);
+		free(arr[i]);
+		i++;
 	}
 	free(arr);
 }

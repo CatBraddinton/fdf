@@ -32,6 +32,9 @@ int	main(int ac, char *av[])
 	fdf->window = mlx_new_window(fdf->mlx, W_WINDOW, H_WINDOW, fdf->name);
 	if (fdf->window == NULL)
 		error("mlx failed to create a window");
+	mlx_string_put(fdf->mlx, fdf->window, 1000, 1200, TEXT_COLOR,
+			"Press SPACE to start");
+	draw_info_menu(fdf);
 	mlx_hook(fdf->window, 2, 0, key_press, fdf);
 	mlx_loop(fdf->mlx);
 	return (0);

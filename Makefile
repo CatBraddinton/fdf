@@ -16,14 +16,13 @@ SOURCES := 	src/main.c\
 			src/draw_lines.c\
 			src/get_color.c\
 			src/change_angles.c\
-			src/draw_straight_line.c\
 			src/display_image.c\
 			src/inits.c\
 			src/key_presses.c\
-
+			src/draw_infomenu.c
 OBJECTS := 	main.o utilits.o validation.o fparser.o draw_lines.o get_color.o\
-			change_angles.o draw_straight_line.o display_image.o\
-			inits.o key_presses.o
+			change_angles.o display_image.o inits.o key_presses.o\
+			draw_infomenu.o
 
 LIBFT := $(LIB_DIR)$(FT)
 INCLUDES := $(INC_DIR)fdf.h\

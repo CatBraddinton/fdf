@@ -16,7 +16,7 @@ void		fdf_put_pixel(t_data *fdf, int x, int y, int color)
 {
 	int i;
 
-	if (x < W_WINDOW && y < H_WINDOW && x >= 0 && y >= 0)
+	if (x < W_WINDOW - W_INFO && y < H_WINDOW && x >= 0 && y >= 0)
 	{
 		i = (x * fdf->bpp / 8) + (y * fdf->size_line);
 		fdf->ibuff[i] = color;
@@ -71,9 +71,7 @@ void		draw_lines(t_point p0, t_point p1, t_data *fdf)
 	init_line(&line, p0, p1);
 	line.dx = abs(line.x0 - line.x1);
 	line.dy = abs(line.y0 - line.y1);
-	if ((line.dy == 0) || (line.dx == 0))
-		draw_straight_line(fdf, &line, p0, p1);
-	else if (line.dy < line.dx)
+	if (line.dy < line.dx)
 	{
 		if (line.x1 < line.x0)
 		{

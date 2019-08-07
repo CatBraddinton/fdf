@@ -18,12 +18,12 @@ void	init_transformation(t_change *params, t_data *fdf)
 	int temp;
 	int temp2;
 
-	temp = W_WINDOW / fdf->width / 2;
+	temp = (W_WINDOW - W_INFO) / fdf->width / 3;
 	temp2 = H_WINDOW / fdf->height / 2;
 	params->scale = (temp < temp2) ? temp : temp2;
-	params->z_change = 20;
+	params->z_change = 10;
 	params->projection = ISO;
-	params->center_x = W_WINDOW / 2;
+	params->center_x = (W_WINDOW - W_INFO) / 2;
 	params->center_y = H_WINDOW / 2;
 	params->x_angle = 0.0;
 	params->y_angle = 0.0;
