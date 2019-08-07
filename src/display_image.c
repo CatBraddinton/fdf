@@ -12,7 +12,20 @@
 
 #include "../inc/render.h"
 
-void	move(t_point ***nmap, t_change params, int y, int x)
+static void	free_arr(t_data *fdf, t_point **new_map)
+{
+	int y;
+
+	y = 0;
+	while (y < fdf->height)
+	{
+		ft_memdel((void **)new_map + y);
+		y++;
+	}
+	free(new_map);
+}
+
+static void	move(t_point ***nmap, t_change params, int y, int x)
 {
 	x_axis(&((*nmap)[y][x].y), &((*nmap)[y][x].z), params.x_angle);
 	y_axis(&((*nmap)[y][x].x), &((*nmap)[y][x].z), params.y_angle);
@@ -23,7 +36,7 @@ void	move(t_point ***nmap, t_change params, int y, int x)
 	(*nmap)[y][x].y += params.center_y;
 }
 
-void	change(t_point ***nmap, t_point **map, t_change params, t_data *fdf)
+static void	change(t_point ***nmap, t_point **map, t_change params, t_data *fdf)
 {
 	int y;
 	int x;
@@ -49,7 +62,7 @@ void	change(t_point ***nmap, t_point **map, t_change params, t_data *fdf)
 	}
 }
 
-void	display_image(t_data *fdf, t_point **map)
+void		display_image(t_data *fdf, t_point **map)
 {
 	int		y;
 	int		x;
@@ -57,7 +70,7 @@ void	display_image(t_data *fdf, t_point **map)
 
 	allocate_map(&new_map, fdf->height, fdf->width);
 	change(&new_map, map, fdf->params, fdf);
-	fdf->image = mlx_new_image(fdf->mlx, W_WINDOW, H_WINDOW);
+	fdf->image = mlx_new_image(fdf->mlx, POINT1, H_WINDOW);
 	fdf->ibuff = mlx_get_data_addr(fdf->image, &(fdf->bpp), &(fdf->size_line),
 			&(fdf->endian));
 	y = 0;
@@ -74,5 +87,6 @@ void	display_image(t_data *fdf, t_point **map)
 		}
 		y++;
 	}
+	free_arr(fdf, new_map);
 	mlx_put_image_to_window(fdf->mlx, fdf->window, fdf->image, 0, 0);
 }

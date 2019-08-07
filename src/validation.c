@@ -43,7 +43,7 @@ static void	check_errors(char *s)
 			i++;
 		else if ((s[i] == ' ') && ((ft_isdigit(s[i + 1])) || (s[i + 1] == '-')
 		|| ((i > 0 && ft_isdigit(s[i - 1])))))
-				i++;
+			i++;
 		else if (s[i] == ',')
 		{
 			check_color(s, ++i);
