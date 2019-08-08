@@ -12,43 +12,18 @@
 
 #include "../inc/fdf.h"
 
-static void	check_color(char *s, int i)
-{
-	int j;
-
-	j = 0;
-	if (s[i] != '\0' && s[i++] != '0')
-		error("invalid map, wrong color");
-	if (s[i] != '\0' && s[i] != 'x' && s[i] != 'X')
-		error("invalid map");
-	i++;
-	while (s[i] != '\0' && j < 6)
-	{
-		if ((!(s[i] >= '0' && s[i] <= '9') && !(s[i] >= 'A' && s[i] <= 'F') &&
-			 !(s[i] >= 'a' && s[i] <= 'f')))
-			error("map is invalid");
-		i++;
-		j++;
-	}
-}
-
-static void	check_errors(char *s)
+static void	check_errors(char *s, int len)
 {
 	int i;
 
 	i = 0;
-	while (s[i] != '\0')
+	while (i < len)
 	{
-		if (ft_isdigit(s[i]) || s[i] == '-')
-			i++;
-		else if ((s[i] == ' ') && ((ft_isdigit(s[i + 1])) || (s[i + 1] == '-')
-		|| ((i > 0 && ft_isdigit(s[i - 1])))))
-			i++;
-		else if (s[i] == ',')
-		{
-			check_color(s, ++i);
-			i += 8;
-		}
+		if (!(s[i] >= '0' && s[i] <= '9') && !(s[i] >= 'A' && s[i] <= 'F')
+		&& !(s[i] >= 'a' && s[i] <= 'f') && s[i] != 'x' && s[i] != 'X'
+		&& s[i] != ',' && s[i] != ' ' && s[i] != '-')
+			error("invalid char on map");
+		i++;
 	}
 }
 
@@ -80,7 +55,7 @@ void		validate_input(t_data *fdf)
 			fdf->width = temp;
 		if (temp != fdf->width)
 			error("invalid map");
-		check_errors(line);
+		check_errors(line, temp);
 		ft_strdel(&line);
 		fdf->height++;
 	}
