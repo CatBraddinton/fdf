@@ -20,6 +20,8 @@ static void	display_specials(t_data *fdf)
 				   "EXIT FDF:          ESC");
 	mlx_string_put(fdf->mlx, fdf->window, OFFSET_L, 70, SPECIALS,
 				   "UNDO ALL CHANGES:  DELETE");
+	mlx_string_put(fdf->mlx, fdf->window, OFFSET_L, 100, SPECIALS,
+				   "CHANGE COLOR:      0 ... 9");
 	mlx_string_put(fdf->mlx, fdf->window, OFFSET_L, KEYS, SPECIALS,
 				   "FDF CONTROLS:");
 	mlx_string_put(fdf->mlx, fdf->window, OFFSET_L + 140, 1270, SPECIALS,
@@ -57,9 +59,8 @@ static void	colors(t_data *fdf)
 
 void		draw_info_menu(t_data *fdf)
 {
-	if (fdf->change_colors == 1)
-		mlx_string_put(fdf->mlx, fdf->window, OFFSET_L, 100, SPECIALS,
-					   "CHANGE COLOR:      0 ... 9");
+
+
 	draw_box(fdf);
 	display_specials(fdf);
 	transformations(fdf);

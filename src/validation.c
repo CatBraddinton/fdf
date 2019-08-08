@@ -12,29 +12,6 @@
 
 #include "../inc/fdf.h"
 
-static void	parse_user_colors(t_data *fdf, char *val1, char *val2)
-{
-	int temp1;
-	int temp2;
-
-	if (val1[0] == '0' && (val1[1] == 'x' || val1[1] == 'X'))
-		temp1 = ft_atoi_base(val1, 16);
-	else
-		temp1 = ft_atoi(val1);
-	if (val2[0] == '0' && (val2[1] == 'x' || val2[1] == 'X'))
-		temp2 = ft_atoi_base(val2, 16);
-	else
-		temp2 = ft_atoi(val2);
-	if ((temp1 > 0 && temp1 <= 0xFFFFFF) && (temp2 > 0 && temp2 <= 0xFFFFFF))
-	{
-		fdf->user_colors = 1;
-		fdf->params.s_color = temp1;
-		fdf->params.f_color = temp2;
-	}
-	else
-		error("color are invalid");
-}
-
 static void	check_errors(char *s, int len)
 {
 	int i;
@@ -61,15 +38,13 @@ static void	validate_path_to_file(char *str)
 		error("incorrect file name");
 }
 
-void		validate_input(t_data *fdf, char **av, int ac)
+void		validate_input(t_data *fdf)
 {
 	int		fd;
 	char	*line;
 	int		temp;
 
 	validate_path_to_file(fdf->name);
-	if (ac == 4)
-		parse_user_colors(fdf, av[2], av[3]);
 	if ((fd = open(fdf->name, O_RDONLY)) < 0)
 		error("failed to open the file");
 	line = NULL;

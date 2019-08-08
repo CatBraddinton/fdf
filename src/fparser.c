@@ -37,12 +37,7 @@ static void	parse_str(t_data *fdf, t_point **map, char *line, int y)
 		map[y][i].y = y;
 		map[y][i].z = ft_atoi(arr[i]);
 		if ((ft_strchr(arr[i], ',')) == NULL)
-		{
-			if (fdf->user_colors == 1)
-				map[y][i].color = fdf->params.s_color;
-			else if (fdf->user_colors == 0 && (fdf->change_colors = 1))
 				map[y][i].color = DEFAULT;
-		}
 		else
 			map[y][i].color = ft_atoi_base((ft_strchr(arr[i], ',')) + 1, 16);
 		i++;

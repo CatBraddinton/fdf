@@ -17,15 +17,15 @@ int	main(int ac, char *av[])
 	t_data	*fdf;
 	t_point	**map;
 
-	if (ac != 2 && ac != 4)
-		error("usage: ./fdf path/to/map/file.fdf [color_1 color_2]");
+	if (ac != 2)
+		error("usage: ./fdf path/to/map/file.fdf");
 	if ((fdf = (t_data *)malloc(sizeof(t_data))) == NULL)
 		error("malloc failed to allocate memory");
 	init_data(fdf, av[1]);
-	validate_input(fdf, av, ac);
+	validate_input(fdf);
 	allocate_map(&map, fdf->height, fdf->width);
-	init_transformation(&(fdf->params), fdf);
 	fparser(fdf, map);
+	init_transformation(&(fdf->params), fdf);
 	fdf->map = map;
 	if ((fdf->mlx = mlx_init()) == NULL)
 		error("mlx initialization failed");

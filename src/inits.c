@@ -27,11 +27,8 @@ void	init_transformation(t_change *params, t_data *fdf)
 	params->x_angle = 0.0;
 	params->y_angle = 0.0;
 	params->z_angle = 0.0;
-	if (fdf->user_colors == 0)
-	{
-		params->s_color = SET2;
-		params->f_color = SET22;
-	}
+	params->s_color = SET2;
+	params->f_color = SET22;
 }
 
 void	init_data(t_data *fdf, char *name)
@@ -45,8 +42,6 @@ void	init_data(t_data *fdf, char *name)
 	fdf->bpp = 0;
 	fdf->size_line = 0;
 	fdf->endian = 0;
-	fdf->change_colors = 0;
-	fdf->user_colors = 0;
 }
 
 void	init_line(t_draw *line, t_point p0, t_point p1)

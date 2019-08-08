@@ -69,12 +69,10 @@ typedef struct	s_data
 	int			endian;
 	t_point		**map;
 	t_change	params;
-	int 		change_colors;
-	int 		user_colors;
 }				t_data;
 
 void			error(char *str);
-void			validate_input(t_data *fdf, char **av, int ac);
+void			validate_input(t_data *fdf);
 void			fparser(t_data *fdf, t_point **map);
 
 void			init_data(t_data *fdf, char *name);
