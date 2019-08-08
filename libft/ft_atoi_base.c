@@ -29,6 +29,8 @@ int	ft_atoi_base(const char *s, int base)
 			res = res + ((s[i] - 55) * power);
 		else if (s[i] >= 'a' && s[i] <= 'f')
 			res = res + ((s[i] - 87) * power);
+		else
+			return (0);
 		i--;
 		power *= base;
 	}

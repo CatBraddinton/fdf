@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
-# include "colorize_it.h"
+
 void		error(char *str)
 {
 	ft_putendl(str);

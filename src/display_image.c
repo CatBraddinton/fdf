@@ -24,14 +24,20 @@ static void	move(t_point ***nmap, t_change params, int y, int x)
 }
 static void	put_color_on_map(t_point ***nmap, t_data *fdf, int y, int x)
 {
-	if ((*nmap)[y][x].z != 0  && fdf->map[y][x].color == DEFAULT)
+	printf("%d\n", fdf->change_colors);
+	if ((*nmap)[y][x].z != 0 && fdf->map[y][x].color == DEFAULT
+		&& fdf->change_colors == 1)
 		(*nmap)[y][x].color = fdf->params.f_color;
-	else if ((*nmap)[y][x].z != 0  && fdf->user_colors == 1 &&
-		fdf->map[y][x].color == fdf->params.s_color)
-		(*nmap)[y][x].color = fdf->params.f_color;
-	else if ((*nmap)[y][x].z == 0 &&  fdf->map[y][x].color == DEFAULT)
+	else if ((*nmap)[y][x].z == 0 && fdf->map[y][x].color == DEFAULT
+			 && fdf->change_colors == 1)
 		(*nmap)[y][x].color = fdf->params.s_color;
-	else if ((*nmap)[y][x].color != DEFAULT)
+	else if ((*nmap)[y][x].z != 0 && fdf->user_colors == 1 &&
+			 fdf->map[y][x].color == fdf->params.s_color)
+		(*nmap)[y][x].color = fdf->params.f_color;
+	else if ((*nmap)[y][x].z == 0 && fdf->user_colors == 1 &&
+			 fdf->map[y][x].color == fdf->params.s_color)
+		(*nmap)[y][x].color = fdf->params.s_color;
+	else
 		(*nmap)[y][x].color = fdf->map[y][x].color;
 }
 

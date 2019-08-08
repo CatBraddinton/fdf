@@ -11,25 +11,27 @@
 /* ************************************************************************** */
 
 #include "../inc/render.h"
-#include "../inc/colorize_it.h"
 
 void	init_transformation(t_change *params, t_data *fdf)
 {
 	int temp;
 	int temp2;
 
-	temp = (W_WINDOW - W_INFO) / fdf->width / 3;
-	temp2 = H_WINDOW / fdf->height / 2;
+	temp = W_IMAGE / fdf->width / 3;
+	temp2 = H_IMAGE / fdf->height / 3;
 	params->scale = (temp < temp2) ? temp : temp2;
 	params->z_change = 10;
 	params->projection = ISO;
-	params->center_x = (W_WINDOW - W_INFO) / 2;
-	params->center_y = H_WINDOW / 2;
+	params->center_x = W_IMAGE / 2;
+	params->center_y = H_IMAGE / 2;
 	params->x_angle = 0.0;
 	params->y_angle = 0.0;
 	params->z_angle = 0.0;
-	params->s_color = SET3;
-	params->f_color = SET33;
+	if (fdf->user_colors == 0)
+	{
+		params->s_color = SET2;
+		params->f_color = SET22;
+	}
 }
 
 void	init_data(t_data *fdf, char *name)
@@ -43,6 +45,8 @@ void	init_data(t_data *fdf, char *name)
 	fdf->bpp = 0;
 	fdf->size_line = 0;
 	fdf->endian = 0;
+	fdf->change_colors = 0;
+	fdf->user_colors = 0;
 }
 
 void	init_line(t_draw *line, t_point p0, t_point p1)

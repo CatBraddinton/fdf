@@ -12,6 +12,29 @@
 
 #include "../inc/fdf.h"
 
+static void	choose_color2(int keycode, t_data *fdf)
+{
+	if ((keycode == SIX) || (keycode == NUM_SIX)) {
+		fdf->params.s_color = SET6;
+		fdf->params.f_color = SET66;
+	}
+	if ((keycode == SEVEN) || (keycode == NUM_SEVEN)) {
+		fdf->params.s_color = SET7;
+		fdf->params.f_color = SET77;
+	}
+	if ((keycode == EIGHT) || (keycode == NUM_EIGHT)) {
+		fdf->params.s_color = SET8;
+		fdf->params.f_color = SET88;
+	}
+	if ((keycode == NINE) || (keycode == NUM_NINE)) {
+		fdf->params.s_color = SET9;
+		fdf->params.f_color = SET99;
+	}
+	if ((keycode == ZERO) || (keycode == NUM_ZERO)) {
+		fdf->params.s_color = SET0;
+		fdf->params.f_color = SET00;
+	}
+}
 static void	choose_color(int keycode, t_data *fdf)
 {
 	if ((keycode == ONE) || (keycode == NUM_ONE))
@@ -39,43 +62,18 @@ static void	choose_color(int keycode, t_data *fdf)
 		fdf->params.s_color = SET5;
 		fdf->params.f_color = SET55;
 	}
-	if ((keycode == SIX) || (keycode == NUM_SIX))
-	{
-		fdf->params.s_color = SET6;
-		fdf->params.f_color = SET66;
-	}
-	if ((keycode == SEVEN) || (keycode == NUM_SEVEN))
-	{
-		fdf->params.s_color = SET7;
-		fdf->params.f_color = SET77;
-	}
-	if ((keycode == EIGHT) || (keycode == NUM_EIGHT))
-	{
-		fdf->params.s_color = SET8;
-		fdf->params.f_color = SET88;
-	}
-	if ((keycode == NINE) || (keycode == NUM_NINE))
-	{
-		fdf->params.s_color = SET9;
-		fdf->params.f_color = SET99;
-	}
-	if ((keycode == ZERO) || (keycode == NUM_ZERO))
-	{
-		fdf->params.s_color = SET0;
-		fdf->params.f_color = SET00;
-	}
 }
 
 static void	mover(int keycode, t_data *fdf)
 {
 	if (keycode == UP)
-		fdf->params.center_y -= 10;
+		fdf->params.center_y -= 15;
 	if (keycode == DOWN)
-		fdf->params.center_y += 10;
+		fdf->params.center_y += 15;
 	if (keycode == LEFT)
-		fdf->params.center_x -= 10;
+		fdf->params.center_x -= 15;
 	if (keycode == RIGHT)
-		fdf->params.center_x += 10;
+		fdf->params.center_x += 15;
 }
 
 static void key_press2(int keycode, t_data *fdf)
@@ -97,6 +95,10 @@ static void key_press2(int keycode, t_data *fdf)
 			fdf->params.z_angle += 0.05;
 	if (keycode == ROT_ZM)
 		fdf->params.z_angle -= 0.05;
+	if (keycode == I)
+		fdf->params.projection = ISO;
+	if (keycode == P)
+		fdf->params.projection = PARALLEL;
 }
 
 int			key_press(int keycode, t_data *fdf)
@@ -109,7 +111,7 @@ int			key_press(int keycode, t_data *fdf)
 	{
 		mlx_destroy_image(fdf->mlx, fdf->image);
 		if (keycode == Z_UP)
-			if (fdf->params.z_change < 100)
+			if (fdf->params.z_change < 150)
 				fdf->params.z_change += 5;
 		if (keycode == Z_DOWN)
 			if (fdf->params.z_change > -100)
@@ -118,11 +120,8 @@ int			key_press(int keycode, t_data *fdf)
 			fdf->params.scale++;
 		if (keycode == ZOOM_M || keycode == MINUS)
 			fdf->params.scale--;
-		if (keycode == I)
-			fdf->params.projection = ISO;
-		if (keycode == P)
-			fdf->params.projection = PARALLEL;
 		choose_color(keycode, fdf);
+		choose_color2(keycode, fdf);
 		key_press2(keycode, fdf);
 		mover(keycode, fdf);
 		display_image(fdf, fdf->map);

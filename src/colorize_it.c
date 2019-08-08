@@ -43,3 +43,4 @@ int			count_gradient(t_draw *line)
 			line->color_p1 & 0xFF, line->color.percent);
 	return ((line->color.r << 16) | (line->color.g << 8) | line->color.b);
 }
+

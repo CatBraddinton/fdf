@@ -2,7 +2,7 @@ NAME := fdf
 FT := libft.a
 
 CC := clang
-FLAGS := -Wall -Wextra -Werror -g -fsanitize=address
+FLAGS := -Wall -Wextra -Werror -O3
 MLXFLAGS := -lmlx -framework OpenGL -framework AppKit
 
 SRC_DIR := src/
@@ -39,7 +39,7 @@ $(NAME): $(OBJECTS) $(LIBFT)
 	$(CC) $(FLAGS) $(MLXFLAGS) -o $(NAME) $(OBJECTS) $(LIBFT)
 
 $(OBJECTS): $(SOURCES) $(INCLUDES)
-	$(CC) $(FLAGS) -c $(SOURCES) -I $(INC_DIR)
+	$(CC) $(FLAGS) -c $(SOURCES) -I $(INCLUDES)
 
 $(LIBFT): lib
 
@@ -47,8 +47,9 @@ lib:
 	make -C $(LIB_DIR)
 
 clean:
-	rm -f $(OBJECTS)
+	rm -f $(OBJECTS) inc/*.gch
 	make fclean -C $(LIB_DIR)
+
 
 fclean: clean
 	rm -f $(NAME)

@@ -25,6 +25,6 @@
 # define POINT3			1360
 # define POINT4 		20
 
-# define OFFSET_L		POINT1 + 15
-
+# define OFFSET_L		POINT1 + 20
+# define KEYS			130
 #endif

@@ -11,7 +11,18 @@
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
-#include "../inc/colorize_it.h"
+
+static void	free_array(char **s, int size)
+{
+	int i;
+
+	i = 0;
+	while (i < size) {
+		free(s[i]);
+		i++;
+	}
+	free(s);
+}
 
 static void	parse_str(t_data *fdf, t_point **map, char *line, int y)
 {
@@ -26,18 +37,17 @@ static void	parse_str(t_data *fdf, t_point **map, char *line, int y)
 		map[y][i].y = y;
 		map[y][i].z = ft_atoi(arr[i]);
 		if ((ft_strchr(arr[i], ',')) == NULL)
-			map[y][i].color = DEFAULT;
+		{
+			if (fdf->user_colors == 1)
+				map[y][i].color = fdf->params.s_color;
+			else if (fdf->user_colors == 0 && (fdf->change_colors = 1))
+				map[y][i].color = DEFAULT;
+		}
 		else
 			map[y][i].color = ft_atoi_base((ft_strchr(arr[i], ',')) + 1, 16);
 		i++;
 	}
-	i = 0;
-	while (i < fdf->width)
-	{
-		free(arr[i]);
-		i++;
-	}
-	free(arr);
+	free_array(arr, fdf->width);
 }
 
 void		fparser(t_data *fdf, t_point **map)
