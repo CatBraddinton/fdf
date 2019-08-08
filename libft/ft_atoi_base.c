@@ -18,7 +18,7 @@ int	ft_atoi_base(const char *s, int base)
 	unsigned long	res;
 	int				i;
 
-	i = strlen(s) - 1;
+	i = ft_strlen(s) - 1;
 	power = 1;
 	res = 0;
 	while (s[i] != 'x' && s[i] != 'X' && i >= 0)

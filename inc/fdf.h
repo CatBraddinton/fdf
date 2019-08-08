@@ -17,7 +17,7 @@
 # include "mlx.h"
 # include "hooks.h"
 # include "info.h"
-
+# include "colorize_it.h"
 
 # include <stdlib.h>
 # include <string.h>
