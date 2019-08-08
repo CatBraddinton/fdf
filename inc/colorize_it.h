@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kdudko <kdudko@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/06 20:01:32 by kdudko            #+#    #+#             */
-/*   Updated: 2019/08/06 20:01:34 by kdudko           ###   ########.fr       */
+/*   Created: 2019/08/08 18:18:56 by kdudko            #+#    #+#             */
+/*   Updated: 2019/08/08 18:18:58 by kdudko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define SET6	0x3d7EAA
 # define SET66	0xFFE47A
 # define SET7	0x30CFD0
-# define SET77	0x330867
+# define SET77	0x8a0000
 # define SET8	0x5EE7DF
 # define SET88	0xB490CA
 # define SET9	0x0D324D

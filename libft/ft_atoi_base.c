@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kdudko <kdudko@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/06 22:32:11 by kdudko            #+#    #+#             */
-/*   Updated: 2019/08/06 22:32:13 by kdudko           ###   ########.fr       */
+/*   Created: 2019/08/08 18:19:27 by kdudko            #+#    #+#             */
+/*   Updated: 2019/08/08 18:19:28 by kdudko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ int	ft_atoi_base(const char *s, int base)
 			res = res + ((s[i] - 55) * power);
 		else if (s[i] >= 'a' && s[i] <= 'f')
 			res = res + ((s[i] - 87) * power);
-		else
-			return (0);
 		i--;
 		power *= base;
 	}

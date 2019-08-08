@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kdudko <kdudko@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/06 16:38:38 by kdudko            #+#    #+#             */
-/*   Updated: 2019/08/06 16:38:41 by kdudko           ###   ########.fr       */
+/*   Created: 2019/08/08 18:20:54 by kdudko            #+#    #+#             */
+/*   Updated: 2019/08/08 18:20:55 by kdudko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ static void	fdf_put_pixel(t_data *fdf, int x, int y, int color)
 
 static void	draw_line_y(t_draw *line, t_data *fdf)
 {
+	line->color.delta = 1;
 	line->color_cur = line->color_p0;
 	line->grad = line->dx / line->dy;
 	line->inter_x = line->x0 + line->grad;
@@ -87,7 +88,6 @@ void		draw_lines(t_point p0, t_point p1, t_data *fdf)
 	}
 	else
 	{
-		line.color.delta = 1;
 		if (line.y1 < line.y0)
 		{
 			ft_swap(&(line.x0), &(line.x1));

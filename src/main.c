@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kdudko <kdudko@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/06 14:36:58 by kdudko            #+#    #+#             */
-/*   Updated: 2019/08/06 14:37:04 by kdudko           ###   ########.fr       */
+/*   Created: 2019/08/08 18:22:05 by kdudko            #+#    #+#             */
+/*   Updated: 2019/08/08 18:22:06 by kdudko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ int	main(int ac, char *av[])
 	init_data(fdf, av[1]);
 	validate_input(fdf);
 	allocate_map(&map, fdf->height, fdf->width);
-	fparser(fdf, map);
 	init_transformation(&(fdf->params), fdf);
+	fparser(fdf, map);
 	fdf->map = map;
 	if ((fdf->mlx = mlx_init()) == NULL)
 		error("mlx initialization failed");

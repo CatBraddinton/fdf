@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_presses.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kdudko <kdudko@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kdudko <kdudko@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/06 19:52:19 by kdudko            #+#    #+#             */
-/*   Updated: 2019/08/07 11:29:20 by kdudko           ###   ########.fr       */
+/*   Created: 2019/08/08 18:21:50 by kdudko            #+#    #+#             */
+/*   Updated: 2019/08/08 18:21:52 by kdudko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,33 @@
 
 static void	choose_color2(int keycode, t_data *fdf)
 {
-	if ((keycode == SIX) || (keycode == NUM_SIX)) {
+	if ((keycode == SIX) || (keycode == NUM_SIX))
+	{
 		fdf->params.s_color = SET6;
 		fdf->params.f_color = SET66;
 	}
-	if ((keycode == SEVEN) || (keycode == NUM_SEVEN)) {
+	if ((keycode == SEVEN) || (keycode == NUM_SEVEN))
+	{
 		fdf->params.s_color = SET7;
 		fdf->params.f_color = SET77;
 	}
-	if ((keycode == EIGHT) || (keycode == NUM_EIGHT)) {
+	if ((keycode == EIGHT) || (keycode == NUM_EIGHT))
+	{
 		fdf->params.s_color = SET8;
 		fdf->params.f_color = SET88;
 	}
-	if ((keycode == NINE) || (keycode == NUM_NINE)) {
+	if ((keycode == NINE) || (keycode == NUM_NINE))
+	{
 		fdf->params.s_color = SET9;
 		fdf->params.f_color = SET99;
 	}
-	if ((keycode == ZERO) || (keycode == NUM_ZERO)) {
+	if ((keycode == ZERO) || (keycode == NUM_ZERO))
+	{
 		fdf->params.s_color = SET0;
 		fdf->params.f_color = SET00;
 	}
 }
+
 static void	choose_color(int keycode, t_data *fdf)
 {
 	if ((keycode == ONE) || (keycode == NUM_ONE))
@@ -76,7 +82,7 @@ static void	mover(int keycode, t_data *fdf)
 		fdf->params.center_x += 15;
 }
 
-static void key_press2(int keycode, t_data *fdf)
+static void	key_press2(int keycode, t_data *fdf)
 {
 	if (keycode == DEL)
 		init_transformation(&(fdf->params), fdf);
@@ -111,7 +117,7 @@ int			key_press(int keycode, t_data *fdf)
 	{
 		mlx_destroy_image(fdf->mlx, fdf->image);
 		if (keycode == Z_UP)
-			if (fdf->params.z_change < 150)
+			if (fdf->params.z_change < 100)
 				fdf->params.z_change += 5;
 		if (keycode == Z_DOWN)
 			if (fdf->params.z_change > -100)
@@ -128,4 +134,3 @@ int			key_press(int keycode, t_data *fdf)
 	}
 	return (1);
 }
-

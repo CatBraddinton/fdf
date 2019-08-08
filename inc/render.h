@@ -20,10 +20,10 @@ typedef struct	s_color
 	double		dist;
 	double		place;
 	double		percent;
-	double 		delta;
-	int 		r;
-	int 		g;
-	int 		b;
+	double		delta;
+	int			r;
+	int			g;
+	int			b;
 }				t_color;
 
 typedef struct	s_draw
@@ -35,7 +35,7 @@ typedef struct	s_draw
 	double		inter_x;
 	int			x;
 	int			y;
-	int 		color_cur;
+	int			color_cur;
 	int			color_p0;
 	int			color_p1;
 	int			x0;

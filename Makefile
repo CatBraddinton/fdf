@@ -1,8 +1,20 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: kdudko <kdudko@student.unit.ua>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2019/08/08 18:22:21 by kdudko            #+#    #+#              #
+#    Updated: 2019/08/08 18:22:23 by kdudko           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME := fdf
 FT := libft.a
 
 CC := clang
-FLAGS := -Wall -Wextra -Werror -O3
+FLAGS := -Wall -Wextra -Werror
 MLXFLAGS := -lmlx -framework OpenGL -framework AppKit
 
 SRC_DIR := src/

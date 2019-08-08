@@ -6,7 +6,7 @@
 /*   By: kdudko <kdudko@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/08 00:38:31 by kdudko            #+#    #+#             */
-/*   Updated: 2019/08/08 00:38:33 by kdudko           ###   ########.fr       */
+/*   Updated: 2019/08/08 18:18:33 by kdudko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int			count_gradient(t_draw *line)
 		line->color.place = line->y - line->y0;
 		line->color.dist = line->y1 - line->y0;
 		line->color.percent = (line->color.dist == 0) ? 1.0 :
-							  (line->color.place / line->color.dist);
+				(line->color.place / line->color.dist);
 	}
 	line->color.r = get_light((line->color_cur >> 16) & 0xFF,
 			(line->color_p1 >> 16) & 0xFF, line->color.percent);
@@ -43,4 +43,3 @@ int			count_gradient(t_draw *line)
 			line->color_p1 & 0xFF, line->color.percent);
 	return ((line->color.r << 16) | (line->color.g << 8) | line->color.b);
 }
-

@@ -51,8 +51,8 @@ typedef struct	s_change
 	double		x_angle;
 	double		y_angle;
 	double		z_angle;
-	int 		s_color;
-	int 		f_color;
+	int			s_color;
+	int			f_color;
 }				t_change;
 
 typedef struct	s_data

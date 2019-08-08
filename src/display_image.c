@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kdudko <kdudko@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/06 15:04:21 by kdudko            #+#    #+#             */
-/*   Updated: 2019/08/06 15:04:22 by kdudko           ###   ########.fr       */
+/*   Created: 2019/08/08 18:20:34 by kdudko            #+#    #+#             */
+/*   Updated: 2019/08/08 18:20:36 by kdudko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ static void	change(t_point ***nmap, t_point **map, t_change params, t_data *fdf)
 			(*nmap)[y][x].y = map[y][x].y * params.scale - (fdf->height *
 					params.scale) / 2;
 			(*nmap)[y][x].z = map[y][x].z * params.scale * params.z_change
-							  / 100;
-			if ((*nmap)[y][x].z != 0  && map[y][x].color == DEFAULT)
+					/ 100;
+			if (map[y][x].z != 0 && map[y][x].color == DEFAULT)
 				(*nmap)[y][x].color = params.f_color;
-			else if ((*nmap)[y][x].z == 0 &&  map[y][x].color == DEFAULT)
+			else if (map[y][x].z == 0 && map[y][x].color == DEFAULT)
 				(*nmap)[y][x].color = params.s_color;
-			else if (map[y][x].color != DEFAULT)
+			else
 				(*nmap)[y][x].color = map[y][x].color;
 			move(nmap, params, y, x);
 		}
@@ -61,7 +61,7 @@ void		display_image(t_data *fdf, t_point **map)
 	change(&new_map, map, fdf->params, fdf);
 	fdf->image = mlx_new_image(fdf->mlx, W_IMAGE, H_IMAGE);
 	fdf->ibuff = mlx_get_data_addr(fdf->image, &(fdf->bpp), &(fdf->size_line),
-								   &(fdf->endian));
+			&(fdf->endian));
 	y = 0;
 	while (y < fdf->height)
 	{

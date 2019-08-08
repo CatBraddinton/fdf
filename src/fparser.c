@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kdudko <kdudko@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/06 14:42:34 by kdudko            #+#    #+#             */
-/*   Updated: 2019/08/06 14:42:36 by kdudko           ###   ########.fr       */
+/*   Created: 2019/08/08 18:21:13 by kdudko            #+#    #+#             */
+/*   Updated: 2019/08/08 18:21:15 by kdudko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ static void	free_array(char **s, int size)
 	int i;
 
 	i = 0;
-	while (i < size) {
+	while (i < size)
+	{
 		free(s[i]);
 		i++;
 	}
@@ -37,7 +38,7 @@ static void	parse_str(t_data *fdf, t_point **map, char *line, int y)
 		map[y][i].y = y;
 		map[y][i].z = ft_atoi(arr[i]);
 		if ((ft_strchr(arr[i], ',')) == NULL)
-				map[y][i].color = DEFAULT;
+			map[y][i].color = DEFAULT;
 		else
 			map[y][i].color = ft_atoi_base((ft_strchr(arr[i], ',')) + 1, 16);
 		i++;

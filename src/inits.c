@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kdudko <kdudko@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/06 15:05:08 by kdudko            #+#    #+#             */
-/*   Updated: 2019/08/06 15:05:10 by kdudko           ###   ########.fr       */
+/*   Created: 2019/08/08 18:21:32 by kdudko            #+#    #+#             */
+/*   Updated: 2019/08/08 18:21:34 by kdudko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,17 @@ void	init_transformation(t_change *params, t_data *fdf)
 	int temp2;
 
 	temp = W_IMAGE / fdf->width / 3;
-	temp2 = H_IMAGE / fdf->height / 3;
+	temp2 = H_IMAGE / fdf->height / 2;
 	params->scale = (temp < temp2) ? temp : temp2;
-	params->z_change = 10;
+	params->z_change = 5;
 	params->projection = ISO;
 	params->center_x = W_IMAGE / 2;
 	params->center_y = H_IMAGE / 2;
 	params->x_angle = 0.0;
 	params->y_angle = 0.0;
 	params->z_angle = 0.0;
-	params->s_color = SET2;
-	params->f_color = SET22;
+	params->s_color = SET8;
+	params->f_color = SET88;
 }
 
 void	init_data(t_data *fdf, char *name)
