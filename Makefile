@@ -2,7 +2,7 @@ NAME := fdf
 FT := libft.a
 
 CC := clang
-FLAGS := -Wall -Wextra -Werror -O3
+FLAGS := -Wall -Wextra -Werror -g -fsanitize=address
 MLXFLAGS := -lmlx -framework OpenGL -framework AppKit
 
 SRC_DIR := src/
@@ -18,14 +18,17 @@ SOURCES := 	src/main.c\
 			src/display_image.c\
 			src/inits.c\
 			src/key_presses.c\
-			src/draw_infomenu.c
+			src/draw_infomenu.c\
+			src/colorize_it.c
 OBJECTS := 	main.o utilits.o validation.o fparser.o draw_lines.o\
 			change_angles.o display_image.o inits.o key_presses.o\
-			draw_infomenu.o
+			draw_infomenu.o colorize_it.o
 
 LIBFT := $(LIB_DIR)$(FT)
 INCLUDES := $(INC_DIR)fdf.h\
 			$(INC_DIR)render.h\
+			$(INC_DIR)hooks.h\
+			$(INC_DIR)colorize_it.h\
 			$(INC_DIR)hooks.h
 
 .PHONY: all  lib clean fclean re

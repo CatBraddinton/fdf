@@ -20,3 +20,5 @@ get_color.o
 inits.o
 key_presses.o
 utilits.o
+colorize_it.o
+draw_infomenu.ogit

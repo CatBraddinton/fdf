@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/fdf.h"
 #include "../inc/render.h"
+#include "../inc/colorize_it.h"
 
 void	init_transformation(t_change *params, t_data *fdf)
 {
@@ -28,6 +28,8 @@ void	init_transformation(t_change *params, t_data *fdf)
 	params->x_angle = 0.0;
 	params->y_angle = 0.0;
 	params->z_angle = 0.0;
+	params->s_color = SET3;
+	params->f_color = SET33;
 }
 
 void	init_data(t_data *fdf, char *name)
@@ -58,4 +60,11 @@ void	init_line(t_draw *line, t_point p0, t_point p1)
 	line->y0 = p0.y;
 	line->x1 = p1.x;
 	line->y1 = p1.y;
+	line->color.dist = 0.0;
+	line->color.place = 0.0;
+	line->color.percent = 0.0;
+	line->color.delta = 0.0;
+	line->color.r = 0;
+	line->color.g = 0;
+	line->color.b = 0;
 }

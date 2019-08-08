@@ -12,16 +12,16 @@
 
 #include "libft.h"
 
-static int	count_int(const char *s, int base)
+int	ft_atoi_base(const char *s, int base)
 {
 	int				power;
 	unsigned long	res;
 	int				i;
 
-	i = ft_strlen(s) - 1;
+	i = strlen(s) - 1;
 	power = 1;
 	res = 0;
-	while (s[i] != 'x' && s[i] != 'X')
+	while (s[i] != 'x' && s[i] != 'X' && i >= 0)
 	{
 		if (s[i] >= '0' && s[i] <= '9')
 			res = res + ((s[i] - 48) * power);
@@ -33,15 +33,4 @@ static int	count_int(const char *s, int base)
 		power *= base;
 	}
 	return (res);
-}
-
-int			ft_atoi_base(const char *s, int base)
-{
-	int res;
-
-	res = 0;
-	while (*s && ((*s == '\t') || (*s == '\n') || (*s == '\f') \
-		|| (*s == '\r') || (*s == '\v') || (*s == ' ')))
-		s++;
-	return (count_int(s, base));
 }

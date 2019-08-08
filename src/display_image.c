@@ -11,19 +11,7 @@
 /* ************************************************************************** */
 
 #include "../inc/render.h"
-
-static void	free_arr(t_data *fdf, t_point **new_map)
-{
-	int y;
-
-	y = 0;
-	while (y < fdf->height)
-	{
-		ft_memdel((void **)new_map + y);
-		y++;
-	}
-	free(new_map);
-}
+#include "../inc/colorize_it.h"
 
 static void	move(t_point ***nmap, t_change params, int y, int x)
 {
@@ -53,10 +41,10 @@ static void	change(t_point ***nmap, t_point **map, t_change params, t_data *fdf)
 					params.scale) / 2;
 			(*nmap)[y][x].z = map[y][x].z * params.scale * params.z_change
 					/ 100;
-			if (map[y][x].z != 0 && map[y][x].color == COLOR)
-				(*nmap)[y][x].color = 0xEBCFFF;
-			else
-				(*nmap)[y][x].color = map[y][x].color;
+			if (map[y][x].z != 0  && map[y][x].color == DEFAULT)
+				(*nmap)[y][x].color = params.f_color;
+			else if (map[y][x].z == 0 &&  map[y][x].color == DEFAULT)
+				(*nmap)[y][x].color = params.s_color;
 			move(nmap, params, y, x);
 		}
 	}
@@ -70,7 +58,7 @@ void		display_image(t_data *fdf, t_point **map)
 
 	allocate_map(&new_map, fdf->height, fdf->width);
 	change(&new_map, map, fdf->params, fdf);
-	fdf->image = mlx_new_image(fdf->mlx, POINT1, H_WINDOW);
+	fdf->image = mlx_new_image(fdf->mlx, W_IMAGE, H_IMAGE);
 	fdf->ibuff = mlx_get_data_addr(fdf->image, &(fdf->bpp), &(fdf->size_line),
 			&(fdf->endian));
 	y = 0;

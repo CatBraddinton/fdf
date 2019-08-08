@@ -16,7 +16,8 @@
 # include "../libft/libft.h"
 # include "mlx.h"
 # include "hooks.h"
-# include "../inc/info.h"
+# include "info.h"
+
 
 # include <stdlib.h>
 # include <string.h>
@@ -25,9 +26,10 @@
 # include <fcntl.h>
 # include <math.h>
 
-# define COLOR 		0x6200A3
-# define W_WINDOW 	2600
-# define H_WINDOW 	1400
+# define W_WINDOW 	2580
+# define H_WINDOW 	1430
+# define W_IMAGE 	2080
+# define H_IMAGE 	1430
 # define ISO		1
 # define PARALLEL	2
 
@@ -49,6 +51,8 @@ typedef struct	s_change
 	double		x_angle;
 	double		y_angle;
 	double		z_angle;
+	int 		s_color;
+	int 		f_color;
 }				t_change;
 
 typedef struct	s_data
@@ -78,4 +82,7 @@ int				key_press(int keycode, t_data *fdf);
 void			display_image(t_data *fdf, t_point **map);
 void			allocate_map(t_point ***map, int rows, int cols);
 void			draw_info_menu(t_data *fdf);
+void			free_arr(t_data *fdf, t_point **new_map);
+void			draw_box(t_data *fdf);
+
 #endif

@@ -13,15 +13,18 @@
 #ifndef INFO_H
 # define INFO_H
 
-# define TEXT_COLOR   0xC2FCFA
-# define BORDER_COLOR 0x96DFE0
+# define TEXT_COLOR   	0xC2FCFA
+# define BORDER_COLOR	0x96DFE0
+# define SPECIALS		0x303BFF
 
-# define W_INFO 510
-# define H_INFO 1450
+# define W_INFO 		520
+# define H_INFO 		1450
 
-# define POINT1	2100
-# define POINT2	2540
-# define POINT3	1360
-# define POINT4 20
+# define POINT1			2080
+# define POINT2			2540
+# define POINT3			1360
+# define POINT4 		20
+
+# define OFFSET_L		POINT1 + 15
 
 #endif
