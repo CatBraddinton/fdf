@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
-#include "../inc/colorize_it.h"
+
 static void	choose_color(int keycode, t_data *fdf)
 {
 	if ((keycode == ONE) || (keycode == NUM_ONE))
@@ -28,6 +28,41 @@ static void	choose_color(int keycode, t_data *fdf)
 	{
 		fdf->params.s_color = SET3;
 		fdf->params.f_color = SET33;
+	}
+	if ((keycode == FOUR) || (keycode == NUM_FOUR))
+	{
+		fdf->params.s_color = SET4;
+		fdf->params.f_color = SET44;
+	}
+	if ((keycode == FIVE) || (keycode == NUM_FIVE))
+	{
+		fdf->params.s_color = SET5;
+		fdf->params.f_color = SET55;
+	}
+	if ((keycode == SIX) || (keycode == NUM_SIX))
+	{
+		fdf->params.s_color = SET6;
+		fdf->params.f_color = SET66;
+	}
+	if ((keycode == SEVEN) || (keycode == NUM_SEVEN))
+	{
+		fdf->params.s_color = SET7;
+		fdf->params.f_color = SET77;
+	}
+	if ((keycode == EIGHT) || (keycode == NUM_EIGHT))
+	{
+		fdf->params.s_color = SET8;
+		fdf->params.f_color = SET88;
+	}
+	if ((keycode == NINE) || (keycode == NUM_NINE))
+	{
+		fdf->params.s_color = SET9;
+		fdf->params.f_color = SET99;
+	}
+	if ((keycode == ZERO) || (keycode == NUM_ZERO))
+	{
+		fdf->params.s_color = SET0;
+		fdf->params.f_color = SET00;
 	}
 }
 

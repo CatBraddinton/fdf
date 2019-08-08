@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../inc/render.h"
-#include "../inc/colorize_it.h"
 
 static void	move(t_point ***nmap, t_change params, int y, int x)
 {
@@ -22,6 +21,18 @@ static void	move(t_point ***nmap, t_change params, int y, int x)
 		iso(&((*nmap)[y][x].x), &((*nmap)[y][x].y), (*nmap)[y][x].z);
 	(*nmap)[y][x].x += params.center_x;
 	(*nmap)[y][x].y += params.center_y;
+}
+static void	put_color_on_map(t_point ***nmap, t_data *fdf, int y, int x)
+{
+	if ((*nmap)[y][x].z != 0  && fdf->map[y][x].color == DEFAULT)
+		(*nmap)[y][x].color = fdf->params.f_color;
+	else if ((*nmap)[y][x].z != 0  && fdf->user_colors == 1 &&
+		fdf->map[y][x].color == fdf->params.s_color)
+		(*nmap)[y][x].color = fdf->params.f_color;
+	else if ((*nmap)[y][x].z == 0 &&  fdf->map[y][x].color == DEFAULT)
+		(*nmap)[y][x].color = fdf->params.s_color;
+	else if ((*nmap)[y][x].color != DEFAULT)
+		(*nmap)[y][x].color = fdf->map[y][x].color;
 }
 
 static void	change(t_point ***nmap, t_point **map, t_change params, t_data *fdf)
@@ -41,10 +52,7 @@ static void	change(t_point ***nmap, t_point **map, t_change params, t_data *fdf)
 					params.scale) / 2;
 			(*nmap)[y][x].z = map[y][x].z * params.scale * params.z_change
 					/ 100;
-			if (map[y][x].z != 0  && map[y][x].color == DEFAULT)
-				(*nmap)[y][x].color = params.f_color;
-			else if (map[y][x].z == 0 &&  map[y][x].color == DEFAULT)
-				(*nmap)[y][x].color = params.s_color;
+			put_color_on_map(nmap, fdf, y, x);
 			move(nmap, params, y, x);
 		}
 	}
